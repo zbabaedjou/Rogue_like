@@ -2,7 +2,7 @@
 
 package roguelike;
 
-public abstract class Monstre extends ElementDeJeu{
+public abstract class Monstre extends Vivant{
 	private int PV_actuel;
 	private int PV_max;
 	private int attaque;

@@ -9,7 +9,7 @@ public class EcranGagnee implements InterfaceAffichage {
 
 	    public void displayOutput(AsciiPanel terminal) {
 	        terminal.write("Vous avez gagné.", 1, 1);
-	        terminal.writeCenter("-- Apuiyez [entrer] pour reprendre --", 22);
+	        terminal.writeCenter("-- Appuyez [entrer] pour reprendre --", 22);
 	    }
 
 	    public InterfaceAffichage respondToUserInput(KeyEvent key) {
