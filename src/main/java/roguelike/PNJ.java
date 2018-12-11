@@ -1,6 +1,6 @@
 package roguelike;
 
-public class PNJ extends Humain{
+public class PNJ {
 	
 	public PNJ() {/*
 		this.PV_actuel=100;
@@ -22,7 +22,5 @@ public class PNJ extends Humain{
 	public void attaquer(Monstre m) {
 		
 	}
-	public void attaquer(Humain h) {
-		
-	} 
+	//public void attaquer(Humain h) {	} 
 }

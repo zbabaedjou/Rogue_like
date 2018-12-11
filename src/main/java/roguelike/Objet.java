@@ -1,13 +1,24 @@
 package roguelike;
 
-public abstract class Objet extends ElementDeJeu{
-	private String nom;
+import java.awt.Color;
+import asciiPanel.AsciiPanel;
 
-	public String getNom() {
-		return nom;
-	}
+public enum Objet implements ElementUnivers{
+    SOL((char)250, AsciiPanel.yellow),
+    MUR((char)177, AsciiPanel.yellow),
+    ARBRE((char)5, AsciiPanel.yellow),
+    FRUIT((char)233, AsciiPanel.red),
+    BOUNDS('x', AsciiPanel.brightBlack);
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+    private char symbole;
+    public char symbole() { return symbole; }
+
+    private Color color;
+    public Color color() { return color; }
+
+    Objet(char symbole, Color color){
+        this.symbole = symbole;
+        this.color = color;
+    }
 }
+

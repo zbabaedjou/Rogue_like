@@ -2,9 +2,10 @@
 
 package roguelike;
 
-public abstract class Monstre extends Vivant{
-	private int PV_actuel;
-	private int PV_max;
+public abstract class Monstre implements ElementUnivers{
+	private int x;
+	private int y;
+	private int PV_actuel;	
 	private int attaque;
 	private int armure;
 	private int xp_value;
@@ -14,14 +15,12 @@ public abstract class Monstre extends Vivant{
 	public void SeDefendre() {}
 	public void Interagir() {}
 	public void attaquer(Monstre m) {}
-	public void attaquer(Humain h) {}
+	//public void attaquer(Humain h) {}
 	
 	public int get_PV_actuel() {
 		return this.PV_actuel;	
 	}
-	public int get_PV_max  () {
-		return this.PV_max    ;	
-	}
+	
 	public int get_attaque  () {
 		return this.attaque    ;
 	}
@@ -35,9 +34,7 @@ public abstract class Monstre extends Vivant{
 	public void set_PV_actuel(int val) {
 		 this.PV_actuel =val;	
 	}
-	public void set_PV_max  (int val) {
-		 this.PV_max =val   ;	
-	}
+
 	public void set_attaque  (int val) {
 		 this.attaque =val ;
 	}

@@ -2,30 +2,30 @@ package roguelike;
 
 import java.awt.Color;
 
-public class World {
-    private Tile[][] tiles;
+public class Univers {
+    private ElementUnivers[][] elements;
     private int width;
     public int width() { return width; }
 
     private int height;
     public int height() { return height; }
 
-    public World(Tile[][] tiles){
-        this.tiles = tiles;
-        this.width = tiles.length;
-        this.height = tiles[0].length;
+    public Univers(ElementUnivers[][] elements){
+        this.elements = elements;
+        this.width = elements.length;
+        this.height = elements[0].length;
     }
     
-    public Tile tile(int x, int y){
+    public ElementUnivers tile(int x, int y){
         if (x < 0 || x >= width || y < 0 || y >= height)
-            return Tile.BOUNDS;
+            return Objet.BOUNDS;
         else
-            return tiles[x][y];
+            return elements[x][y];
     }
 
 
 	public char glyph(int x, int y){
-	        return tile(x, y).glyph();
+	        return tile(x, y).symbole();
 	    }
 	
 	

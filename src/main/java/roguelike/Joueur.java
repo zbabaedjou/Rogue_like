@@ -1,7 +1,9 @@
 package roguelike;
 
-public class Joueur extends Humain{
-	
+public abstract class Joueur implements ElementUnivers{
+	private int x;
+	private int y;
+	private int PV;
 	public Joueur() {/*
 		this.PV_actuel=100;
 		this.PV_max=100;
@@ -13,16 +15,6 @@ public class Joueur extends Humain{
 		*/
 	}	
 	
-	public Joueur(String name) {/*
-		this.PV_actuel=100;
-		this.PV_max=100;
-		this.attaque=0;
-		this.armure=0;
-		this.xp_value=0;
-		this.nom=name;
-		this.direction=0;
-		*/
-	}
 	
 	public void SeDefendre() {
 		
@@ -33,7 +25,5 @@ public class Joueur extends Humain{
 	public void attaquer(Monstre m) {
 		
 	}
-	public void attaquer(Humain h) {
-		
-	} 
+	
 }

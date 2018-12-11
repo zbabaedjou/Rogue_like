@@ -1,5 +1,5 @@
 package roguelike;
 
-public abstract class Vivant extends ElementDeJeu {
+public abstract class Vivant {
 
 }
