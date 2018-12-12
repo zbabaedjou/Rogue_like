@@ -27,7 +27,7 @@ public class ApplicationWindows extends JFrame implements KeyListener {
     }
 
     public void keyPressed(KeyEvent e) {
-        screen = screen.respondToUserInput(e); //renvoie sur l	a page de démarrage
+        screen = screen.respondToUserInput(e); //renvoie sur la page de démarrage
         repaint();
     }
 
