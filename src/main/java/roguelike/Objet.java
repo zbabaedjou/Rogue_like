@@ -1,6 +1,8 @@
 package roguelike;
 
 import java.awt.Color;
+import java.util.Random;
+
 import asciiPanel.AsciiPanel;
 
 public enum Objet implements ElementUnivers{
@@ -19,6 +21,13 @@ public enum Objet implements ElementUnivers{
     Objet(char symbole, Color color){
         this.symbole = symbole;
         this.color = color;
+    }
+    
+    
+    
+    public static Objet getRandomElement() {
+        Random random = new Random();
+        return values()[random.nextInt(values().length)];
     }
 }
 
