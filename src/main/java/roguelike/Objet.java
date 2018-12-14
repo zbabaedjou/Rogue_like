@@ -7,15 +7,15 @@ import asciiPanel.AsciiPanel;
 
 public enum Objet implements ElementUnivers{
     SOL((char)250, AsciiPanel.yellow),
-    MUR((char)177, AsciiPanel.yellow),
-    ARBRE((char)5, AsciiPanel.yellow),
-    FRUIT((char)233, AsciiPanel.red),
-    BOUNDS('x', AsciiPanel.brightBlack);
-
+    MUR((char)177, AsciiPanel.yellow);
+    //ARBRE((char)5, AsciiPanel.yellow);
+    //PIECES((char)233, AsciiPanel.red),
+   // BOUNDS('x', AsciiPanel.brightBlack);
+    
     private char symbole;
+    private Color color;
     public char symbole() { return symbole; }
 
-    private Color color;
     public Color color() { return color; }
 
     Objet(char symbole, Color color){
@@ -23,11 +23,14 @@ public enum Objet implements ElementUnivers{
         this.color = color;
     }
     
-    
-    
+  
     public static Objet getRandomElement() {
         Random random = new Random();
         return values()[random.nextInt(values().length)];
     }
+    
+    public boolean estRemplacable() {
+		return this.symbole == '.';
+	}
 }
 
