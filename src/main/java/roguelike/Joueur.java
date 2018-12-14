@@ -4,15 +4,11 @@ public abstract class Joueur implements ElementUnivers{
 	private int x;
 	private int y;
 	private int PV;
-	public Joueur() {/*
-		this.PV_actuel=100;
-		this.PV_max=100;
-		this.attaque=0;
-		this.armure=0;
-		this.xp_value=0;
-		this.nom="inconnu";
-		this.direction=0;
-		*/
+	
+	public Joueur(int x, int y) {
+		this.x=x;
+		this.y=y;
+		
 	}	
 	
 	
@@ -24,6 +20,36 @@ public abstract class Joueur implements ElementUnivers{
 	}
 	public void attaquer(Monstre m) {
 		
+	}
+
+
+	public int getX() {
+		return x;
+	}
+
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+
+	public int getY() {
+		return y;
+	}
+
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+
+	public int getPV() {
+		return PV;
+	}
+
+
+	public void setPV(int pV) {
+		PV = pV;
 	}
 	
 }

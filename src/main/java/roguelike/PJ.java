@@ -4,22 +4,22 @@ import java.awt.Color;
 
 import asciiPanel.AsciiPanel;
 
-public class PNJ extends Joueur {
+public class PJ extends Joueur{
+
+	final static char symbole=((char)72);
+	final static Color color=AsciiPanel.blue;
 	
-	final static char symbole=((char)64);
-	final static Color color=AsciiPanel.white;
-	
-	public PNJ(int x,int y) {
+	public PJ(int x,int y) {
 		super(x,y);
 		
 	}
 	
-	public char symbole() { return symbole; }
+		public char symbole() { return symbole; }
 	
 	
-	public Color color() { return color; }
-	
-	
+		public Color color() { return color; }
+		
+		
 	public void SeDefendre() {
 		
 	}
@@ -30,4 +30,5 @@ public class PNJ extends Joueur {
 		
 	}
 	//public void attaquer(Humain h) {	} 
+	
 }

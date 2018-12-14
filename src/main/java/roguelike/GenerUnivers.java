@@ -1,31 +1,43 @@
 package roguelike;
 
-import java.util.Random;
 
 
 public class GenerUnivers {
-	int width;
-	int height;
+	private int width;
+	private int height;
+	private int niveau;
 	private ElementUnivers[][] elements;
 	
 	
-	public GenerUnivers(){
-		Random rand = new Random();
-
-		int n = rand.nextInt(50) + 1;
+	public GenerUnivers(int width, int height) {
+		this.width = width;
+		this.height = height;
+		this.elements = new ElementUnivers[width][height];
+		
 	}
-	public Univers build() {
-		return new Univers(elements);
+	
+	
+	/*ENvoie du tableau généré dans le l'univers
+	 * Cette fonction créé une instance de Univers et lui 
+	 * envoie le tableau généré en paramettre
+	 */
+	public Univers generer() {
+		return new Univers(randomizeElement());
 	}
-
-	private GenerUnivers randomizeTiles() {
+	
+	
+	/*Fonction de generation alléatoire de l'espace 
+	 * Cette fonction remplis aléatoirement les cases du tableau éléments	
+	 */
+	public ElementUnivers[][] randomizeElement() {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				elements[x][y] =  Objet.getRandomElement();
 			}
 		}
-		return this;
+		return elements;
 	}
+	
 	
 
 }
