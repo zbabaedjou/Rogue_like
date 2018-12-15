@@ -13,12 +13,12 @@ public class PJ extends Joueur{
 		super(x,y);
 		
 	}
+	public char get_symbole() { return symbole; }
 	
-		public char symbole() { return symbole; }
 	
+	public Color get_color() { return color; }
 	
-		public Color color() { return color; }
-		
+
 		
 	public void SeDefendre() {
 		

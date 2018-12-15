@@ -14,10 +14,10 @@ public class PNJ extends Joueur {
 		
 	}
 	
-	public char symbole() { return symbole; }
+	public char get_symbole() { return symbole; }
 	
 	
-	public Color color() { return color; }
+	public Color get_color() { return color; }
 	
 	
 	public void SeDefendre() {

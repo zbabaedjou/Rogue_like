@@ -1,6 +1,6 @@
 package roguelike;
 
-public abstract class Joueur implements ElementUnivers{
+public abstract class Joueur extends Vivant{
 	private int x;
 	private int y;
 	private int PV;

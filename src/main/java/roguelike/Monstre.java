@@ -1,8 +1,7 @@
 
-
 package roguelike;
 
-public abstract class Monstre implements ElementUnivers{
+public abstract class Monstre extends Vivant{
 	private int x;
 	private int y;
 	private int PV_actuel;	
