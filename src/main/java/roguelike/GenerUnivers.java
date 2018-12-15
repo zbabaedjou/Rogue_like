@@ -13,7 +13,7 @@ public class GenerUnivers {
 		this.width = width;
 		this.height = height;
 		this.elements = new ElementUnivers[width][height];
-		
+		this.niveau=1;
 	}
 	
 	

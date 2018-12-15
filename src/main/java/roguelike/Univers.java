@@ -2,6 +2,8 @@ package roguelike;
 
 import java.awt.Color;
 
+import asciiPanel.AsciiPanel;
+
 public class Univers {
 	
     public ElementUnivers[][] elements;
@@ -16,13 +18,13 @@ public class Univers {
         this.height = elements[0].length;
     }
     
-   
+    
     /*
      * Cette fonction retour le symbole qui est à la case
      * [x][y] de la variable éléments
      */
 	public char symbole(int x, int y){
-	        return elements[x][y].symbole();
+	        return elements[x][y].get_symbole();
 	    }
 	
 	/*
@@ -30,7 +32,7 @@ public class Univers {
      * [x][y] de la variable éléments
      */
 	public Color color(int x, int y){
-	        return elements[x][y].color();
+	        return elements[x][y].get_color();
     }
 	
     
@@ -61,7 +63,7 @@ public class Univers {
 			x = (int)(Math.random() * width);
 			y = (int)(Math.random() * height);
 			
-		}while(((Objet) elements[x][y]).symbole()!='.');
+		}while(((Objet) elements[x][y]).get_symbole()!='.');
 		pj=new PJ(x,y);
 		elements[x][y]=pj;
 		((PNJ)elements[x][y]).setPV(5);
@@ -81,16 +83,19 @@ public class Univers {
 			}while(!((Objet) elements[x][y]).estRemplacable());
 			elements[x][y]=new PNJ(x,y);
 			
-		}
-		
-		count=(int)(Math.random() * width);
-		
-			
+		}	
+		count=(int)(Math.random() * width);		
 	}
 	
 	public int height() { return height; }
     public int width() { return width; }
+  
+	public void deplacer(int x1, int y1,int x2,int y2){
+		
+		this.elements[x2][y2] = this.elements[x1][y1];
+		this.elements[x1][y1]=Objet.SOL;
 
-
+}
+    
 }
 

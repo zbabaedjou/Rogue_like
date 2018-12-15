@@ -13,22 +13,25 @@ public class PJ extends Joueur{
 		super(x,y);
 		
 	}
+	public char get_symbole() { return symbole; }
 	
-		public char symbole() { return symbole; }
 	
+	public Color get_color() { return color; }
 	
-		public Color color() { return color; }
-		
-		
-	public void SeDefendre() {
-		
+	// seul le joueur interragit differament avec un escalier
+	@Override
+	public void Interagir(Objet o) {
+		if (o == Objet.ESCALIER) {
+			// genere un nouveau niveau
+			
+			/*
+			
+			univers.elements = genere univers
+			replacer le joueur
+			
+			*/
+			
+		}
 	}
-	public void Interagir() {
-		
-	}
-	public void attaquer(Monstre m) {
-		
-	}
-	//public void attaquer(Humain h) {	} 
 	
 }
