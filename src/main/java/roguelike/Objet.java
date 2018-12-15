@@ -7,11 +7,13 @@ import asciiPanel.AsciiPanel;
 
 public enum Objet implements ElementUnivers{
     SOL((char)250, AsciiPanel.yellow),
-    MUR((char)177, AsciiPanel.yellow);
+    MUR((char)177, AsciiPanel.yellow),
+	ESCALIER('E',AsciiPanel.white);
     //ARBRE((char)5, AsciiPanel.yellow);
     //PIECES((char)233, AsciiPanel.red),
    // BOUNDS('x', AsciiPanel.brightBlack);
     
+	
 	private int x;
 	private int y;
     private char symbole;

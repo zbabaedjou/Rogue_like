@@ -31,7 +31,7 @@ public class GenerUniversTest {
 		Assert.assertNotNull(Univ.elements);
 		for(int i=0;i<2;i++)
 			for(int j=0;j<2;j++)
-				System.out.println(Univ.elements[i][j].symbole());
+				System.out.println(Univ.elements[i][j].get_symbole());
 	}
 
 }

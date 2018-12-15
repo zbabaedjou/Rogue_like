@@ -11,7 +11,6 @@ public class PNJ extends Joueur {
 	
 	public PNJ(int x,int y) {
 		super(x,y);
-		
 	}
 	
 	public char get_symbole() { return symbole; }

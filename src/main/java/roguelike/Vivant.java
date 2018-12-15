@@ -17,8 +17,7 @@ public abstract class Vivant implements ElementUnivers{
 		this.combattre(m);
 	}
 	public void Interagir(Objet o) {}
-	public void Interagir(Joueur j) {}// suppression d'effectif ...
-	public void Interagir(PNJ pnj) {}
+	public void Interagir(Joueur j) {}
 	
 	public void combattre(Vivant v) {
 		if (this.get_attaque() > v.get_armure())
@@ -89,4 +88,24 @@ public abstract class Vivant implements ElementUnivers{
 	public void set_direction_y(int val) {
 		 this.direction_y =val;	
 	}
+	
+	public int getX() {
+		return x;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+	public int getY() {
+		return y;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
+	public int getPV() {
+		return PV_actuel;
+	}
+	public void setPV(int pV) {
+		PV_actuel = pV;
+	}
+
 }

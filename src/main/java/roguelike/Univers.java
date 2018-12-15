@@ -2,6 +2,8 @@ package roguelike;
 
 import java.awt.Color;
 
+import asciiPanel.AsciiPanel;
+
 public class Univers {
 	
     public ElementUnivers[][] elements;
@@ -88,20 +90,11 @@ public class Univers {
 	public int height() { return height; }
     public int width() { return width; }
   
-	public void echanger(int x1, int y1,int x2,int y2){
-		  /* 
-		int tmp_element=this.elements[x2][y2];
-		this.elements[x2][y2] = this.elements[x1][y1];
-		this.elements[x1][y1] = tmp_element;
+	public void deplacer(int x1, int y1,int x2,int y2){
 		
-		//mettre a jours les coordonnées
-		int tmpx1=this.elements[x1][y1].x;
-		int tmpy1=this.elements[x1][y1].y;
-		this.elements[x1][y1].x=this.elements[x2][y2].x;
-		this.elements[x1][y1].y=this.elements[x2][y2].y;
-		this.elements[x2][y2].x=tmpx1;
-		this.elements[x2][y2].y=tmpy1;
-	*/	
+		this.elements[x2][y2] = this.elements[x1][y1];
+		this.elements[x1][y1]=Objet.SOL;
+
 }
     
 }
