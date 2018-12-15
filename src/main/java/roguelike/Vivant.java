@@ -16,7 +16,8 @@ public abstract class Vivant implements ElementUnivers{
 	public void Interagir(Monstre m) {
 		this.combattre(m);
 	}
-	public void Interagir(Objet o) {}
+	public void Interagir(Objet o) {
+	}
 	public void Interagir(Joueur j) {}
 	
 	public void combattre(Vivant v) {
@@ -50,6 +51,7 @@ public abstract class Vivant implements ElementUnivers{
 		// sinon destination est un objet sur le quel on ne peut 
 		// pas se deplacer : un monstre par ex
 	}
+	
 	
 	public int get_PV_actuel() {
 		return this.PV_actuel;	
