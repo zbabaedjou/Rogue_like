@@ -17,10 +17,14 @@ public class Univers {
     }
     
    
-    /*
-     * Cette fonction retour le symbole qui est à la case
-     * [x][y] de la variable éléments
+    
+    /**
+     * retourne le symbole qui est à la case (x,y) de elements
+     * @param x
+     * @param y
+     * @return symbole
      */
+    
 	public char symbole(int x, int y){
 	        return elements[x][y].symbole();
 	    }
@@ -34,25 +38,30 @@ public class Univers {
     }
 	
     
-    /*
+    /**
      * Ajoute des montres dans le tableau d'éléments
      */
-    public void ajouterMonstre(){
-		int x;
-		int y;
+    public void addMonstre(){
+		int x=1;
+		int y=1;
 		int count=1;
 		for(int i=0;i<count;i++){
+			
 			do{
-				x = (int)(Math.random() * this.width);
+				x = (int)(Math.random() * this.width); 			
 				y = (int)(Math.random() * this.height);
 				
-			}while(!((Objet) elements[x][y]).estRemplacable());// methode a probleme.
+			}while(!((Objet)elements[x][y]).estRemplacable());
 			elements[x][y]=new Golbin(x,y);
+
 		}
 		count++;
 		
 	}
 	
+    /**
+     * Ajoute des montres dans le tableau d'éléments
+     */
 	public void addPj(){
 		int x;
 		int y;
@@ -61,13 +70,17 @@ public class Univers {
 			x = (int)(Math.random() * width);
 			y = (int)(Math.random() * height);
 			
-		}while(((Objet) elements[x][y]).symbole()!='.');
+		}while(!((Objet)elements[x][y]).estRemplacable());
 		pj=new PJ(x,y);
 		elements[x][y]=pj;
-		((PNJ)elements[x][y]).setPV(5);
+		//((PNJ)elements[x][y]).setPV(5);
 			
 	}
 	
+	
+	/**
+     * Ajoute des montres dans le tableau d'éléments
+     */
 	public void addPnj(){
 		int x;
 		int y;

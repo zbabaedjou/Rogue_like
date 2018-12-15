@@ -14,10 +14,9 @@ public class PJ extends Joueur{
 		
 	}
 	
-		public char symbole() { return symbole; }
+	public char symbole() { return symbole; }
 	
-	
-		public Color color() { return color; }
+	public Color color() { return color; }
 		
 		
 	public void SeDefendre() {

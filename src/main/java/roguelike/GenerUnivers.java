@@ -9,6 +9,7 @@ public class GenerUnivers {
 	private ElementUnivers[][] elements;
 	
 	
+	
 	public GenerUnivers(int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -17,17 +18,18 @@ public class GenerUnivers {
 	}
 	
 	
-	/*ENvoie du tableau généré dans le l'univers
-	 * Cette fonction créé une instance de Univers et lui 
-	 * envoie le tableau généré en paramettre
+	/**
+	 * 
+	 * @return une instance de l'Univers avec comme tableau, le tableau d'éléments généré
 	 */
 	public Univers generer() {
 		return new Univers(randomizeElement());
-	}
+	}	
 	
 	
-	/*Fonction de generation alléatoire de l'espace 
-	 * Cette fonction remplis aléatoirement les cases du tableau éléments	
+	/**
+	 * Génère aléatoirements des éléments pour remplire elements
+	 * @return elements
 	 */
 	public ElementUnivers[][] randomizeElement() {
 		for (int x = 0; x < width; x++) {

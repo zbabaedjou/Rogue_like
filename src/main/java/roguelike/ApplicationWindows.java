@@ -12,7 +12,7 @@ public class ApplicationWindows extends JFrame implements KeyListener {
 
     public ApplicationWindows(){
         super();
-        terminal = new AsciiPanel();
+        terminal = new AsciiPanel(100,50);
         add(terminal);
         pack();
         screen = new EcranDemarage();

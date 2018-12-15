@@ -30,7 +30,7 @@ public enum Objet implements ElementUnivers{
     }
     
     public boolean estRemplacable() {
-		return this.symbole == '.';
+		return this.symbole == (char)250;
 	}
 }
 

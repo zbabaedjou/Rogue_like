@@ -7,8 +7,8 @@ public class EcranDemarage implements InterfaceAffichage{
 	
 
 	    public void displayOutput(AsciiPanel terminal) {
-	    	terminal.writeCenter("RogueLike Game " ,1,terminal.red);
-	    	terminal.writeCenter("-- Appuyez sur [entrer] pour démarer --", 22);
+	    	terminal.writeCenter("RogueLike Game " ,1,AsciiPanel.red);
+	    	terminal.writeCenter("-- Appuyez sur [entrer] pour démarer --", 45);
 	    }
 
 	    public InterfaceAffichage respondToUserInput(KeyEvent key) {
