@@ -47,7 +47,7 @@ public abstract class Vivant implements ElementUnivers{
 		if (destination == Objet.SOL )
 		this.x=this.x+direction_x;//destination.x;
 		this.y=this.y+direction_y;//destination.y;
-		u.echanger(this.x,this.y,this.x-direction_x,this.y-direction_y);
+		u.deplacer(this.x,this.y,this.x-direction_x,this.y-direction_y);
 		// sinon destination est un objet sur le quel on ne peut 
 		// pas se deplacer : un monstre par ex
 	}
