@@ -12,7 +12,6 @@ public class Golbin extends Monstre{
 	
 	public Golbin(int x, int y){
 		super(x,y);
-		
 		this.set_PV_actuel(100);
 		this.set_attaque(10);
 		this.set_armure(0);
@@ -26,6 +25,6 @@ public class Golbin extends Monstre{
 	
 	
 	public Color get_color() { return color; }
-	
 
+	
 }

@@ -18,17 +18,20 @@ public class PJ extends Joueur{
 	
 	public Color get_color() { return color; }
 	
-
-		
-	public void SeDefendre() {
-		
+	// seul le joueur interragit differament avec un escalier
+	@Override
+	public void Interagir(Objet o) {
+		if (o == Objet.ESCALIER) {
+			// genere un nouveau niveau
+			
+			/*
+			
+			univers.elements = genere univers
+			replacer le joueur
+			
+			*/
+			
+		}
 	}
-	public void Interagir() {
-		
-	}
-	public void attaquer(Monstre m) {
-		
-	}
-	//public void attaquer(Humain h) {	} 
 	
 }
