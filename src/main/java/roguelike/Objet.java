@@ -14,8 +14,8 @@ public enum Objet implements ElementUnivers{
    // BOUNDS('x', AsciiPanel.brightBlack);
     
 	
-	private int x;
-	private int y;
+	//private int x;
+	//private int y;
     private char symbole;
     private Color color;
     
@@ -28,14 +28,23 @@ public enum Objet implements ElementUnivers{
         this.color = color;
     }
     
-  
+    
+    /**
+     * Choisi un élément de Objet au hasard
+     * @return un objet
+     */
     public static Objet getRandomElement() {
         Random random = new Random();
         return values()[random.nextInt(values().length)];
     }
     
+    
+    /**
+     *  vérifi si un objet est remplaçable(si c'est un SOL)
+     * @return true si l'élement est un sol, false sinon
+     */
     public boolean estRemplacable() {
-		return this.symbole == '.';
+    	return this.symbole == SOL.symbole;
 	}
 }
 

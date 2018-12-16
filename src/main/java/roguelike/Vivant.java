@@ -34,6 +34,7 @@ public abstract class Vivant implements ElementUnivers{
 	}
 	
 	
+	
 	/// en gros : si le jouer se deplace vers du sol il y vas 
 	/// il regarde dans cette dirrection de toute maniere 
 	public void se_deplacer(int direction_x , int direction_y,
@@ -50,6 +51,7 @@ public abstract class Vivant implements ElementUnivers{
 		// sinon destination est un objet sur le quel on ne peut 
 		// pas se deplacer : un monstre par ex
 	}
+	
 	
 	public int get_PV_actuel() {
 		return this.PV_actuel;	

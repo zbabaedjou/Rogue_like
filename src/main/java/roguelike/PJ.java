@@ -13,6 +13,7 @@ public class PJ extends Joueur{
 		super(x,y);
 		
 	}
+	
 	public char get_symbole() { return symbole; }
 	
 	
