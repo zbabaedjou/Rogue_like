@@ -2,7 +2,7 @@ package roguelike;
 
 import java.util.*;
 import java.util.Stack;
-
+import java.util.Random;
 // objectif 
 
 // 1 genere un perfect maze = aucune case n'est innacessible
@@ -20,6 +20,7 @@ public class GenerUnivers {
 	private int height;// longeur
 	private int niveau;
 	private ElementUnivers[][] elements;
+	// maze variables
 	public Stack<Integer> a_visiter_x;
 	public Stack<Integer> a_visiter_y;
 	public Stack<Integer> pere_x;
@@ -44,7 +45,13 @@ public class GenerUnivers {
 	public Univers generer() {
 		//return new Univers(randomizeElement());
 		//return new Univers(walling());
-		return new Univers(mazing());
+		this.mazing();
+		
+		int salles[][] =new int[this.width][this.height];
+		this.creerSalles(salles);
+		this.ajout_monstres(salles);
+		
+		return new Univers(this.elements);
 	}
 	
 	
@@ -71,76 +78,155 @@ public class GenerUnivers {
 	
 	public ElementUnivers[][] mazing() {
 		this.walling();
-		int i=1;
-			//this.elements[1][1] =  Objet.MUR;
-			this.a_visiter_x.push(i);
-			this.a_visiter_y.push(i);
-			this.pere_x.push(1);
-			this.pere_y.push(1);
 			
-			int x_actuel;
-			int y_actuel;
-			int prevx;
-			int prevy;
+		this.a_visiter_x.push(1);
+		this.a_visiter_y.push(1);
+		this.pere_x.push(1);
+		this.pere_y.push(1);
+	
+	
+		int x_actuel;
+		int y_actuel;
+		int prevx;
+		int prevy;
 			
-			int w=0;
+		
 			
-			// problem de non random
-		      List arrlist = new ArrayList();
-		      String priorite="A";
-		      // populate the list
-		      arrlist.add("A");
-		      arrlist.add("B");
-		      arrlist.add("C"); 
-		      arrlist.add("D"); 
-		      
-			while(!this.a_visiter_x.empty()) {// on s'arrete des que c'est vide
-				Collections.shuffle(arrlist);
-				System.out.println(" iteration n° "+w);
-				w++;
-			x_actuel=this.a_visiter_x.pop();
-			y_actuel=this.a_visiter_y.pop();
-			prevx=this.pere_x.pop();
-			prevy=this.pere_y.pop();
-			if(this.elements[x_actuel][y_actuel] ==  Objet.MUR) {
-			this.elements[x_actuel][y_actuel] =  Objet.SOL;
-			this.elements[(x_actuel+prevx)/2][(y_actuel+prevy)/2] =  Objet.SOL;
+		// problem de non random
+	      List<String> arrlist = new ArrayList<String>();
+	      String priorite="A";
+	      arrlist.add("A");
+		  arrlist.add("B");
+		  arrlist.add("C"); 
+		  arrlist.add("D"); 
+		     
+		  while(!this.a_visiter_x.empty()) {// on s'arrete des que la liste est vide
+			  Collections.shuffle(arrlist);
+				
 			
+			  x_actuel=this.a_visiter_x.pop();
+			  y_actuel=this.a_visiter_y.pop();
+			  prevx=this.pere_x.pop();
+			  prevy=this.pere_y.pop();
+			  if(this.elements[x_actuel][y_actuel] ==  Objet.MUR) {
+				  this.elements[x_actuel][y_actuel] =  Objet.SOL;
+				  this.elements[(x_actuel+prevx)/2][(y_actuel+prevy)/2] =  Objet.SOL;
 			
+				
+	
+			    for(int r=0;r<4;r++) {
+			    	
+			    	priorite=(String)arrlist.get(r);
+			    	
+			    
+					if(x_actuel+2<this.width && priorite=="A") {// x+2 y+0
+						this.a_visiter_x.push(x_actuel+2);
+						this.a_visiter_y.push(y_actuel);
+						this.pere_x.push(x_actuel);
+						this.pere_y.push(y_actuel);
+					}
+					if(x_actuel-2>0  && priorite=="B") {// x-2 y+0
+						this.a_visiter_x.push(x_actuel-2);
+						this.a_visiter_y.push(y_actuel);
+						this.pere_x.push(x_actuel);
+						this.pere_y.push(y_actuel);
+					}
+					if(y_actuel+2<this.height  && priorite=="C") {// x+0 y+2
+						this.a_visiter_x.push(x_actuel);
+						this.a_visiter_y.push(y_actuel+2);
+						this.pere_x.push(x_actuel);
+						this.pere_y.push(y_actuel);
+					}
+					if(y_actuel-2>0  && priorite=="D") {// x+0 y-2
+						this.a_visiter_x.push(x_actuel);
+						this.a_visiter_y.push(y_actuel-2);
+						this.pere_x.push(x_actuel);
+						this.pere_y.push(y_actuel);
+					}
+			    }
+			}
+			}
+			
+		return elements;
+	}// end mazing
+	
+	private int getRandomNumberInRange(int min, int max) {// [min,max]
 
-		    for(int r=0;r<4;r++) {
-		    	
-		    	priorite=(String)arrlist.get(r);
-		    	System.out.println("after "+priorite);
-		    
-				if(x_actuel+2<this.width && priorite=="A") {// x+2 y+0
-					this.a_visiter_x.push(x_actuel+2);
-					this.a_visiter_y.push(y_actuel);
-					this.pere_x.push(x_actuel);
-					this.pere_y.push(y_actuel);
-				}
-				if(x_actuel-2>0  && priorite=="B") {// x-2 y+0
-					this.a_visiter_x.push(x_actuel-2);
-					this.a_visiter_y.push(y_actuel);
-					this.pere_x.push(x_actuel);
-					this.pere_y.push(y_actuel);
-				}
-				if(y_actuel+2<this.height  && priorite=="C") {// x+0 y+2
-					this.a_visiter_x.push(x_actuel);
-					this.a_visiter_y.push(y_actuel+2);
-					this.pere_x.push(x_actuel);
-					this.pere_y.push(y_actuel);
-				}
-				if(y_actuel-2>0  && priorite=="D") {// x+0 y-2
-					this.a_visiter_x.push(x_actuel);
-					this.a_visiter_y.push(y_actuel-2);
-					this.pere_x.push(x_actuel);
-					this.pere_y.push(y_actuel);
-				}
-		    }
+		if (min >= max) {
+			throw new IllegalArgumentException("max must be greater than min");
+		}
+
+		Random r = new Random();
+		return r.nextInt((max - min) + 1) + min;
+	}
+	
+	
+	public void creerSalles(int[][] tab) {// 1 signifit que c'est une salle
+		for (int x = 0; x < tab.length; x++) {
+			for (int y = 0; y < tab[0].length; y++) {
+				tab[x][y] = 0;
 			}
+		}
+		int x1,y1;
+		int sizex,sizey;
+		int droit=0;
+		
+
+		
+		for (int i = 0; i <this.niveau+5; i++) {
+			// le nombre de tentative de creation de salle
+			
+			sizex=this.getRandomNumberInRange(5,tab.length/5);
+			sizey=this.getRandomNumberInRange(4,tab[0].length/5);
+			x1= this.getRandomNumberInRange(0,tab.length - sizex);
+			y1= this.getRandomNumberInRange(0,tab[0].length - sizey);
+			for (int x = x1; x < sizex; x++) {
+				for (int y = y1; y < sizey; y++) {
+					if(tab[x][y] ==1) droit=1;
+				}
+			}
+			if(droit==0) {
+				System.out.println(" iteration n° "+i);
+				System.out.println(" iteration x1 :"+x1+", y1 :"+y1);
+				
+				for (int x = x1; x < x1+sizex; x++) {
+					for (int y = y1; y < y1+sizey; y++) {
+						
+						tab[x][y] =1;
+					}
+				}
+			}else {
+				droit=0;
 			}
 			
+		}
+		for (int x = 0; x < tab.length; x++) {
+			for (int y = 0; y < tab[0].length; y++) {
+				if(tab[x][y] ==1) {
+					this.elements[x][y]=Objet.SOL;
+					
+				}
+			}
+		}
+		//return tab;    // tab est modifiée dirrectement
+	}
+	
+	public boolean est_dans_salle(int[][] tab,int x,int y) {// 1 for yes
+		if(tab[x][y] ==1) return true;
+		else
+		return false;
+	}
+	
+	public ElementUnivers[][] ajout_monstres(int[][] tab_salle) {
+		int chance=10;
+		for (int x = 0; x < width; x++) {
+			for (int y = 0; y < height; y++) {
+				if(est_dans_salle(tab_salle, x, y)&& (this.elements[x][y]== Objet.SOL))
+					
+					if( chance > this.getRandomNumberInRange(0,100))
+						this.elements[x][y] =  new Golbin( x,  y);
+			}
+		}
 		return elements;
 	}
 	
