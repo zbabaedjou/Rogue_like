@@ -7,30 +7,44 @@ import asciiPanel.AsciiPanel;
 
 public enum Objet implements ElementUnivers{
     SOL((char)250, AsciiPanel.yellow),
-    MUR((char)177, AsciiPanel.yellow);
+    MUR((char)177, AsciiPanel.yellow),
+	ESCALIER('E',AsciiPanel.white);
     //ARBRE((char)5, AsciiPanel.yellow);
     //PIECES((char)233, AsciiPanel.red),
    // BOUNDS('x', AsciiPanel.brightBlack);
     
+	
+	//private int x;
+	//private int y;
     private char symbole;
     private Color color;
-    public char symbole() { return symbole; }
+    
+    public char get_symbole() { return symbole; }
 
-    public Color color() { return color; }
+    public Color get_color() { return color; }
 
     Objet(char symbole, Color color){
         this.symbole = symbole;
         this.color = color;
     }
     
-  
+    
+    /**
+     * Choisi un élément de Objet au hasard
+     * @return un objet
+     */
     public static Objet getRandomElement() {
         Random random = new Random();
         return values()[random.nextInt(values().length)];
     }
     
+    
+    /**
+     *  vérifi si un objet est remplaçable(si c'est un SOL)
+     * @return true si l'élement est un sol, false sinon
+     */
     public boolean estRemplacable() {
-		return this.symbole == '.';
+    	return this.symbole == SOL.symbole;
 	}
 }
 

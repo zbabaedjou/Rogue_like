@@ -7,12 +7,16 @@ import java.awt.event.KeyListener;
 
 public class ApplicationWindows extends JFrame implements KeyListener {
 
-    private AsciiPanel terminal;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private AsciiPanel terminal;
     private InterfaceAffichage screen;
 
     public ApplicationWindows(){
         super();
-        terminal = new AsciiPanel();
+        terminal = new AsciiPanel(100,50);
         add(terminal);
         pack();
         screen = new EcranDemarage();

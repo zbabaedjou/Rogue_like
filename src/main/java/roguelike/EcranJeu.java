@@ -10,33 +10,37 @@ public class EcranJeu implements InterfaceAffichage {
 		private int screenWidth;
 		private int screenHeight;
 		private Univers univers;
-		private PJ PJ;
-		
+		private PJ pj;
+		//créer tableau monstres
 		public EcranJeu(){
 			screenWidth = 80;
-			screenHeight = 21;
+			screenHeight = 30;
 			createUnivers();
 			
 		}
 		
 		
-		/*Création de l'univers
+		/**Création de l'univers
 		 * Instantiation de l'univers en faisant usage de la fonction 
 		 * generer de GenerUniver
+		 * @return void
 		 */		
 		public void createUnivers(){
-			univers = new GenerUnivers(90, 32)
+			univers = new GenerUnivers(screenWidth, screenHeight)
 						.generer();
-			//univers.addPj();
-			//univers.ajouterMonstre();
-			//univers.addPnj();
+			pj=univers.addPj();
+			univers.addMonstre();
+			univers.addPnj();
 		}
 		
-		//public int getScrollX() { return Math.max(0, Math.min(univers.pj.getX() - screenWidth / 2, univers.width() - screenWidth)); }
-		
-		//public int getScrollY() { return Math.max(0, Math.min(univers.pj.getY() - screenHeight / 2, univers.height() - screenHeight)); }
 		
 		
+		/**
+		 * Achiche les elements de l'univer dans le terminal
+		 * @param terminal 
+		 * @param left marge du haut avec afichage de l'univers
+		 * @param top marge de gauche avec afichage de l'univers
+		 */
 		private void afficherElements(AsciiPanel terminal,int left, int top) {
 			int wy;
 			int wx; 
@@ -44,25 +48,32 @@ public class EcranJeu implements InterfaceAffichage {
 				for (int y = 0; y < screenHeight; y++){
 					wx = x + left;
 					wy = y + top;
-					terminal.write(univers.symbole(wx, wy), x, y, univers.color(wx, wy));
+					terminal.write(univers.symbole(x, y),wx, wy, univers.color(x, y));
 				}
 			}
 		}
 
 		
-		
+		/**
+		 * Afichage du terminal
+		 */
 		public void displayOutput(AsciiPanel terminal) {
-	    	int left = 5;
-			int top = 4; 
+	    	int left = 10;
+			int top = 5; 
 			
 					
-	        terminal.write("You are having fun.", 1, 1);
-	        afficherElements(terminal, top, left);
-	        terminal.writeCenter("-- press [escape] to lose or [enter] to win --", 22);
+			terminal.writeCenter("RogueLike Game " ,1,AsciiPanel.red);
+	        afficherElements(terminal,left, top);
+	        terminal.writeCenter("-- press [escape] to lose or [enter] to win --", 45);
 	    }
 
+		
+		/**
+		 * Gerer les interactions entre le joueur et le programme
+		 */
 	    public InterfaceAffichage respondToUserInput(KeyEvent key) {
 	        switch (key.getKeyCode()){
+	        
 	        case KeyEvent.VK_ESCAPE: return new EcranPerdu();
 	        case KeyEvent.VK_ENTER: return new EcranGagnee();
 	        }
