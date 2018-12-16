@@ -50,6 +50,7 @@ public class GenerUnivers {
 		int salles[][] =new int[this.width][this.height];
 		this.creerSalles(salles);
 		this.ajout_monstres(salles);
+		this.addEscalier(salles);
 		
 		return new Univers(this.elements);
 	}
@@ -203,8 +204,7 @@ public class GenerUnivers {
 		for (int x = 0; x < tab.length; x++) {
 			for (int y = 0; y < tab[0].length; y++) {
 				if(tab[x][y] ==1) {
-					this.elements[x][y]=Objet.SOL;
-					
+					this.elements[x][y]=Objet.SOL;	
 				}
 			}
 		}
@@ -230,5 +230,21 @@ public class GenerUnivers {
 		return elements;
 	}
 	
+	public void addEscalier(int[][] tab_salle){
+		int x;
+		int y;
+		x = (int)(Math.random() * width);
+		y = (int)(Math.random() * height);
+		while( ( (elements[x][y] != Objet.SOL) ) || !(est_dans_salle(tab_salle, x, y)))
+		{
+			x = (int)(Math.random() * width);
+			y = (int)(Math.random() * height);
+			
+		}
+		
+		elements[x][y]=Objet.ESCALIER;
+		
+			
+	}
 	//////////////     //////////
 }
