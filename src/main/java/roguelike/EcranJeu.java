@@ -28,9 +28,9 @@ public class EcranJeu implements InterfaceAffichage {
 		public void createUnivers(){
 			univers = new GenerUnivers(screenWidth, screenHeight)
 						.generer();
-			pj=univers.addPj();
-			univers.addMonstre();
-			univers.addPnj();
+			//pj=univers.addPj();
+			//univers.addMonstre();
+			//univers.addPnj();
 		}
 		
 		
