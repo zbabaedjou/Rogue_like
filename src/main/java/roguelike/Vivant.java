@@ -37,18 +37,22 @@ public abstract class Vivant implements ElementUnivers{
 	
 	/// en gros : si le jouer se deplace vers du sol il y vas 
 	/// il regarde dans cette dirrection de toute maniere 
-	public void se_deplacer(int direction_x , int direction_y,
+	public String se_deplacer(int direction_x , int direction_y,
 			ElementUnivers destination, Univers u) {
 	
 		this.direction_x=direction_x;
 		this.direction_y=direction_y;
 		
 		//if(destination.get_char() == (char)250)
-		if (destination == Objet.SOL )
-			
+		if (destination == Objet.SOL ){			
 		u.deplacer(this.x,this.y,this.x+direction_x,this.y+direction_y);
 		this.x=this.x+direction_x;//destination.x;
 		this.y=this.y+direction_y;//destination.y;
+		
+		return "";
+		}
+		else
+			return "Oups! Vous ne pouvez pas aller là..";
 		// sinon destination est un objet sur le quel on ne peut 
 		// pas se deplacer : un monstre par ex
 	}

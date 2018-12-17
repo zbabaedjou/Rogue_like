@@ -75,6 +75,12 @@ public class EcranJeu implements InterfaceAffichage {
 	        terminal.writeCenter("-- press [escape] to lose or [enter] to win --", 45);
 	        if (subscreen != null)
 				subscreen.displayOutput(terminal);	    }
+		
+		public void action(int x, int y){
+			
+			this.messages=pj.se_deplacer(x, y, this.univers.elements[pj.getX()+x][pj.getY()+y], this.univers);
+			
+		}
 
 		
 		/**
@@ -85,8 +91,12 @@ public class EcranJeu implements InterfaceAffichage {
 	        
 	        case KeyEvent.VK_ESCAPE: return new EcranPerdu();
 	        case KeyEvent.VK_ENTER: return new EcranGagnee();
-	        case KeyEvent.VK_DOWN: pj.se_deplacer(0, -1, this.univers.elements[pj.getX()][pj.getY()-1], this.univers);this.messages="Mouvement vers la gauche"; break;
-	        case KeyEvent.VK_UP: this.messages="Mouvement vers la Droite"; break;
+	        
+	        case KeyEvent.VK_LEFT:  action(-1, 0); break;
+			case KeyEvent.VK_RIGHT: action( 1, 0); break;
+			case KeyEvent.VK_UP:    action( 0,-1); break;
+			case KeyEvent.VK_DOWN:  action( 0, 1); break;
+			
 	        }
 	    
 	        return this;
