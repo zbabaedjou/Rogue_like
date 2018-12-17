@@ -51,6 +51,7 @@ public class GenerUnivers {
 		this.creerSalles(salles);
 		this.ajout_monstres(salles);
 		this.addEscalier(salles);
+		this.addPNJ(salles);
 		
 		return new Univers(this.elements);
 	}
@@ -187,9 +188,6 @@ public class GenerUnivers {
 				}
 			}
 			if(droit==0) {
-				System.out.println(" iteration n° "+i);
-				System.out.println(" iteration x1 :"+x1+", y1 :"+y1);
-				
 				for (int x = x1; x < x1+sizex; x++) {
 					for (int y = y1; y < y1+sizey; y++) {
 						
@@ -243,6 +241,22 @@ public class GenerUnivers {
 		}
 		
 		elements[x][y]=Objet.ESCALIER;
+		
+			
+	}
+	public void addPNJ(int[][] tab_salle){
+		int x;
+		int y;
+		x = (int)(Math.random() * width);
+		y = (int)(Math.random() * height);
+		while( ( (elements[x][y] != Objet.SOL) ) || !(est_dans_salle(tab_salle, x, y)))
+		{
+			x = (int)(Math.random() * width);
+			y = (int)(Math.random() * height);
+			
+		}
+		
+		elements[x][y]=new PNJ(x,y);
 		
 			
 	}
