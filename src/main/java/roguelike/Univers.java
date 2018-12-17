@@ -73,7 +73,7 @@ public class Univers {
 			x = (int)(Math.random() * width);
 			y = (int)(Math.random() * height);
 			
-		}while(!((Objet)elements[x][y]).estRemplacable());
+		}while(elements[x][y] != Objet.SOL);
 		pj=new PJ(x,y);
 		elements[x][y]=pj;
 		return pj;

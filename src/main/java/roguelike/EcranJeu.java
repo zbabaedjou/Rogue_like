@@ -11,12 +11,15 @@ public class EcranJeu implements InterfaceAffichage {
 		private int screenHeight;
 		private Univers univers;
 		private PJ pj;
+		private InterfaceAffichage subscreen;
+		private String messages;
+		
 		//créer tableau monstres
 		public EcranJeu(){
 			screenWidth = 80;
 			screenHeight = 30;
 			createUnivers();
-			
+			messages = "";
 		}
 		
 		
@@ -63,8 +66,15 @@ public class EcranJeu implements InterfaceAffichage {
 					
 			terminal.writeCenter("RogueLike Game " ,1,AsciiPanel.red);
 	        afficherElements(terminal,left, top);
+	        terminal.writeCenter(messages, 43);
+
+	       // String stats = String.format(" Niveau: "+"Points de vie: "+String.valueOf(pj.get_PV_actuel()));
+			//terminal.write(stats, 1, 44);
+			
+			
 	        terminal.writeCenter("-- press [escape] to lose or [enter] to win --", 45);
-	    }
+	        if (subscreen != null)
+				subscreen.displayOutput(terminal);	    }
 
 		
 		/**
@@ -75,6 +85,8 @@ public class EcranJeu implements InterfaceAffichage {
 	        
 	        case KeyEvent.VK_ESCAPE: return new EcranPerdu();
 	        case KeyEvent.VK_ENTER: return new EcranGagnee();
+	        case KeyEvent.VK_DOWN: pj.se_deplacer(0, -1, this.univers.elements[pj.getX()][pj.getY()-1], this.univers);this.messages="Mouvement vers la gauche"; break;
+	        case KeyEvent.VK_UP: this.messages="Mouvement vers la Droite"; break;
 	        }
 	    
 	        return this;
