@@ -46,5 +46,9 @@ public enum Objet implements ElementUnivers{
     public boolean estRemplacable() {
     	return this.symbole == SOL.symbole;
 	}
+    public boolean estDansSalle(int tableau[][], int x,int y) {
+    	return tableau[x][y]== 1; // 1 signifit que c'est une salle
+	}
+    
 }
 
