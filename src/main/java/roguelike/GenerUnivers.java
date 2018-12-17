@@ -187,9 +187,7 @@ public class GenerUnivers {
 				}
 			}
 			if(droit==0) {
-				System.out.println(" iteration n° "+i);
-				System.out.println(" iteration x1 :"+x1+", y1 :"+y1);
-				
+
 				for (int x = x1; x < x1+sizex; x++) {
 					for (int y = y1; y < y1+sizey; y++) {
 						

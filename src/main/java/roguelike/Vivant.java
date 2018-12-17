@@ -13,24 +13,88 @@ public abstract class Vivant implements ElementUnivers{
 							// x ou y doit etre a 0 car pas de diagonale
 	
 	
-	public void Interagir(Monstre m) {
+	public String Interagir(Monstre m) {
 		this.combattre(m);
+		return "";
 	}
-	public void Interagir(Objet o) {}
-	public void Interagir(Joueur j) {}
-	
-	public void combattre(Vivant v) {
-		if (this.get_attaque() > v.get_armure())
-			v.set_PV_actuel(v.get_PV_actuel() - (this.get_attaque() - v.get_armure()));
-		// ici on  suppose que les etres vivant rippostent toujours
-		if (v.get_attaque() > this.get_armure())
-			this.set_PV_actuel(this.get_PV_actuel() - (v.get_attaque() - this.get_armure()));
+	public String Interagir(Objet o) {
+
+		String a_afficher ="";
 		
+		if(o == Objet.MUR) {
+			 a_afficher = " c'est un MUR : "+o.get_symbole();
+ 
+		}
+		if(o == Objet.POMME) {
+			 a_afficher = " c'est une POMME : "+o.get_symbole();
+			 this.set_PV_actuel(this.get_PV_actuel() + 15);
+
+		}
+		if(o == Objet.PARCHEMIN_DE_FORCE) {
+			 a_afficher = " vous avez utiliser une PARCHEMIN_DE_FORCE : "+o.get_symbole()+" \n HONTE A VOUS ne voulez vous donc aucun chalenge ?";
+			 this.set_attaque(get_attaque()+1);
+		}
+		if(o == Objet.SOL) {
+			a_afficher = " il n'y a rien devan vous";
+
+		}
+		
+		if(o == Objet.ESCALIER) {
+			a_afficher = " c'etait un ESCALIER : "+o.get_symbole()+" \n vous etes maintenat plus bas dans le donjon";
+			// creer une nouvelle map 
+			// replacer le joueur 
+		}
+	return a_afficher;
+//afficher(a_afficher);
 	}
-	public void combattre(Objet o) {
-		// il faut juste que la fonction existe afin de ne pas créer de bug lorsque 
-		// on essaye de combattre un objet
-		// alors par pitié ziadadh ne la suprime pas 
+	public String Interagir(Joueur j) {
+		String a_afficher = j.repondre();
+		return a_afficher;
+		//afficher(a_afficher);
+	}
+	
+	public String combattre(Vivant v) {
+		String a_afficher ="";
+		if (this.get_attaque() > v.get_armure()) {
+			v.set_PV_actuel(v.get_PV_actuel() - (this.get_attaque() - v.get_armure()));
+			a_afficher=this.get_symbole()+" dealt "+(v.get_PV_actuel() - (this.get_attaque() - v.get_armure()))+" to " + v.get_symbole();
+		}
+			// ici on  suppose que les etres vivant rippostent toujours
+		if (v.get_attaque() > this.get_armure()) {
+			this.set_PV_actuel(this.get_PV_actuel() - (v.get_attaque() - this.get_armure()));
+			a_afficher=a_afficher+	v.get_symbole()+" dealt "+(this.get_PV_actuel() - (v.get_attaque() - this.get_armure()))+" to " + this.get_symbole();
+	
+					}
+		return a_afficher;
+	}
+	public String combattre(Objet o) {
+		String a_afficher ="";
+		
+		if(o == Objet.MUR) {
+			 a_afficher = " c'est un MUR : "+o.get_symbole()+"\nvous ne gagnerez pas contre lui";
+		}
+		
+		if(o == Objet.POMME) {
+			 a_afficher = " vous avez detruit une POMME : "+o.get_symbole();
+			o=Objet.SOL;
+		}
+		if(o == Objet.PARCHEMIN_DE_FORCE) {
+			 a_afficher = " vous avez detruit une PARCHEMIN_DE_FORCE : "+o.get_symbole()+" \n HONTE A VOUS";
+			o=Objet.SOL;
+		}
+		
+		if(o == Objet.SOL) {
+			a_afficher = " il n'y a rien devan vous";
+
+		}
+		
+		if(o == Objet.ESCALIER) {
+			a_afficher = " c'etait un ESCALIER : "+o.get_symbole()+"\n essayez d'interragir avec";
+			// creer une nouvelle map 
+			// replacer le joueur 
+		}
+	return a_afficher;
+//afficher(a_afficher);
 	}
 	
 	
@@ -52,7 +116,7 @@ public abstract class Vivant implements ElementUnivers{
 		return "";
 		}
 		else
-			return "Oups! Vous ne pouvez pas aller là..";
+			return "Oups! Vous ne pouvez pas aller la  ...";
 		// sinon destination est un objet sur le quel on ne peut 
 		// pas se deplacer : un monstre par ex
 	}

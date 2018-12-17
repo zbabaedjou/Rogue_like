@@ -21,7 +21,7 @@ public class PJ extends Joueur{
 	
 	// seul le joueur interragit differament avec un escalier
 	@Override
-	public void Interagir(Objet o) {
+	public String Interagir(Objet o) {
 		if (o == Objet.ESCALIER) {
 			// genere un nouveau niveau
 			
@@ -33,6 +33,7 @@ public class PJ extends Joueur{
 			*/
 			
 		}
+	return "";
 	}
 	
 }
