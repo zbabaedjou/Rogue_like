@@ -16,8 +16,39 @@ public abstract class Vivant implements ElementUnivers{
 	public void Interagir(Monstre m) {
 		this.combattre(m);
 	}
-	public void Interagir(Objet o) {}
-	public void Interagir(Joueur j) {}
+	public void Interagir(Objet o) {
+
+		String a_afficher ;
+		
+		if(o == Objet.MUR) {
+			 a_afficher = " c'est un MUR : "+o.get_symbole();
+ 
+		}
+		if(o == Objet.POMME) {
+			 a_afficher = " c'est une POMME : "+o.get_symbole();
+			 this.set_PV_actuel(this.get_PV_actuel() + 15);
+
+		}
+		if(o == Objet.PARCHEMIN_DE_FORCE) {
+			 a_afficher = " vous avez utiliser une PARCHEMIN_DE_FORCE : "+o.get_symbole()+" \n HONTE A VOUS ne voulez vous donc aucun chalenge ?";
+			 this.set_attaque(get_attaque()+1);
+		}
+		if(o == Objet.SOL) {
+			a_afficher = " il n'y a rien devan vous";
+
+		}
+		
+		if(o == Objet.ESCALIER) {
+			a_afficher = " c'etait un ESCALIER : "+o.get_symbole()+" \n vous etes maintenat plus bas dans le donjon";
+			// creer une nouvelle map 
+			// replacer le joueur 
+		}
+		//afficher(a_afficher);
+	}
+	public void Interagir(Joueur j) {
+		String a_afficher = j.repondre();
+		//afficher(a_afficher);
+	}
 	
 	public void combattre(Vivant v) {
 		if (this.get_attaque() > v.get_armure())
@@ -28,9 +59,34 @@ public abstract class Vivant implements ElementUnivers{
 		
 	}
 	public void combattre(Objet o) {
-		// il faut juste que la fonction existe afin de ne pas créer de bug lorsque 
-		// on essaye de combattre un objet
-		// alors par pitié ziadadh ne la suprime pas 
+	String a_afficher ;
+		
+		if(o == Objet.MUR) {
+			 a_afficher = " c'est un MUR : "+o.get_symbole()+"\nvous ne gagnerez pas contre lui";
+		}
+		
+		if(o == Objet.POMME) {
+			 a_afficher = " vous avez detruit une POMME : "+o.get_symbole();
+			o=Objet.SOL;
+		}
+		if(o == Objet.PARCHEMIN_DE_FORCE) {
+			 a_afficher = " vous avez detruit une PARCHEMIN_DE_FORCE : "+o.get_symbole()+" \n HONTE A VOUS";
+			o=Objet.SOL;
+		}
+		
+		if(o == Objet.SOL) {
+			a_afficher = " il n'y a rien devan vous";
+
+		}
+		
+		if(o == Objet.ESCALIER) {
+			a_afficher = " c'etait un ESCALIER : "+o.get_symbole()+"\n essayez d'interragir avec";
+			// creer une nouvelle map 
+			// replacer le joueur 
+		}
+		//afficher(a_afficher);
+		
+		
 	}
 	
 	

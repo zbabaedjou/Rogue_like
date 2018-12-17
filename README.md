@@ -12,3 +12,29 @@ README ROGUE_lIKE
  Cet univers doit être généré aléatoirement à chaque début de partie: la disposition des différentes pièces, 
  ainsi que l'emplacement des objets des etres vivants  et des monstres.
   
+
+
+GENERATION_UNIVERS
+	pour fabriquer un en environement explorable il falais que chaque case SOL soit accessible par les joueur
+	j'ai donc pour cela vu le problem comme de la generation de graph connex
+	les sommets sont X les arc -- ou |
+	le tableaau est donc 
+	X--X--X--X			
+	|  |  |  |			
+	X--X--X--X		
+	|  |  |  |			
+	X--X--X--X			
+	au debut tout le  tableau est composé de mur 
+	Je relie tout les sommets a un sommet deja vistité 
+	generant anssi un graph connex (ma methode d'exploration etant aleatoire j'obtien un labyrinth)
+	je fait enssuite des trou dans le tableau , que j'appelle salle
+	et je place des monstres dans les salles
+	je place l'escalier dans une salle
+	
+	
+	
+	
+	
+	
+	
+	
