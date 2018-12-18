@@ -1,9 +1,5 @@
 package roguelike;
 //Classe Test/*
-/*
-package roguelike;
-
-import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +11,7 @@ import junit.framework.Assert;
  
 public class TestGenerUnivers {
 private GenerUnivers gener;
-//private GenerUnivers creerSalles;
+
 	@Before
 	public void setUp() throws Exception
 	{
@@ -28,11 +24,24 @@ private GenerUnivers gener;
 		Assert.assertNotNull (gener.randomizeElement()[1][2]);
 	}
 	
-	@Test
-	public void test1() 
+	/*@Test
+	public void testajout_monstres() 
 	{
-		Assert.assertNotNull (gener.creerSalles(int[1][1] tab));
-	}
+		int[][] tab_salle=new int [1][3];
+		int width;
+		for (int x = 0; x < width; x++) 
+		{
+			int height;
+			for (int y = 0; y < height; y++) 
+			{
+				gener.get_elements[x][y]=
+			}
+		}
+		
+		Assert.assertNotNull	gener.ajout_monstres(tab_salle);
 
+			
+	}
+	
+	*/
 }
-*/
