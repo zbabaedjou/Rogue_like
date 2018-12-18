@@ -56,6 +56,13 @@ public abstract class Vivant implements ElementUnivers{
 		//afficher(a_afficher);
 	}
 	
+	public String combattreAll(ElementUnivers e){
+		if (e instanceof Objet)
+			return combattre((Objet)e);
+		if (e instanceof Vivant)
+			return combattre((Vivant)e);
+		return "";
+	}
 	public String interagirAll(ElementUnivers e){
 		if (e instanceof Objet)
 			return Interagir((Objet)e);
@@ -69,15 +76,24 @@ public abstract class Vivant implements ElementUnivers{
 	public String combattre(Vivant v) {
 		String a_afficher ="";
 		if (this.get_attaque() > v.get_armure()) {
-			v.set_PV_actuel(v.get_PV_actuel() - (this.get_attaque() - v.get_armure()));
-			a_afficher=this.get_symbole()+" dealt "+(v.get_PV_actuel() - (this.get_attaque() - v.get_armure()))+" to " + v.get_symbole();
+			v.set_PV_actuel( (this.get_attaque() - v.get_armure()));
+			a_afficher=this.get_symbole()+" dealt "+(v.get_PV_actuel() - (this.get_attaque() - v.get_armure()))+" to " + v.get_symbole()+"   ";
 		}
 			// ici on  suppose que les etres vivant rippostent toujours
 		if (v.get_attaque() > this.get_armure()) {
-			this.set_PV_actuel(this.get_PV_actuel() - (v.get_attaque() - this.get_armure()));
+			this.set_PV_actuel( (v.get_attaque() - this.get_armure()));
 			a_afficher=a_afficher+	v.get_symbole()+" dealt "+(this.get_PV_actuel() - (v.get_attaque() - this.get_armure()))+" to " + this.get_symbole();
 	
 					}
+		if(this.get_PV_actuel()<=0 && v.get_PV_actuel()<=0) {
+			a_afficher=this.get_symbole()+" est mort"+ " et " + v.get_symbole()+" est mort";
+		}
+		if(this.get_PV_actuel()<=0 && v.get_PV_actuel()> 0) {
+			a_afficher=this.get_symbole()+" est mort";
+		}
+		if(this.get_PV_actuel()>0 && v.get_PV_actuel()<=0) {
+			a_afficher=v.get_symbole()+" est mort";
+		}
 		return a_afficher;
 	}
 	public String combattre(Objet o) {

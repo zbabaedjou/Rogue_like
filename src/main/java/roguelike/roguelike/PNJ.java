@@ -11,6 +11,12 @@ public class PNJ extends Joueur {
 	
 	public PNJ(int x,int y) {
 		super(x,y);
+		this.set_PV_actuel(100);
+		this.set_attaque(0);
+		this.set_armure(0);
+		this.set_xp_value(1);
+		this.set_direction_x(1);
+		this.set_direction_y(0);
 	}
 	
 	public char get_symbole() { return symbole; }
