@@ -180,8 +180,8 @@ public class GenerUnivers {
 			
 			sizex=this.getRandomNumberInRange(5,tab.length/5);
 			sizey=this.getRandomNumberInRange(4,tab[0].length/5);
-			x1= this.getRandomNumberInRange(0,tab.length - sizex);
-			y1= this.getRandomNumberInRange(0,tab[0].length - sizey);
+			x1= this.getRandomNumberInRange(1,tab.length - sizex-1);
+			y1= this.getRandomNumberInRange(1,tab[0].length - sizey-1);
 			for (int x = x1; x < sizex; x++) {
 				for (int y = y1; y < sizey; y++) {
 					if(tab[x][y] ==1) droit=1;
