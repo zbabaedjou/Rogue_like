@@ -8,8 +8,12 @@ import org.junit.Test;
 
 import junit.framework.Assert;
 
+
+//Teste qui verifie si  une des cases du tableau est null 
+ 
 public class TestGenerUnivers {
 private GenerUnivers gener;
+//private GenerUnivers creerSalles;
 	@Before
 	public void setUp() throws Exception
 	{
@@ -20,6 +24,12 @@ private GenerUnivers gener;
 	public void test() 
 	{
 		Assert.assertNotNull (gener.randomizeElement()[1][2]);
+	}
+	
+	@Test
+	public void test1() 
+	{
+		Assert.assertNotNull (gener.creerSalles(int[1][1] tab));
 	}
 
 }
