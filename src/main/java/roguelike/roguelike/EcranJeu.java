@@ -81,7 +81,7 @@ public class EcranJeu implements InterfaceAffichage {
 	        	
 	        terminal.writeCenter(this.messages, 43);
 	        
-	       String stats = String.format(" Niveau: "+"Points de vie: "+String.valueOf(pj.get_PV_actuel()));
+	       String stats = String.format(" Niveau: "+"  Points de vie: "+String.valueOf(pj.get_PV_actuel()));
 	       terminal.write(stats, 1, 44);
 			
 			
