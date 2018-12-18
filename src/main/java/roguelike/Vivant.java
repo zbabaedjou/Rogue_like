@@ -14,8 +14,9 @@ public abstract class Vivant implements ElementUnivers{
 	
 	
 	public String Interagir(Monstre m) {
-		this.combattre(m);
-		return "";
+		
+		return this.combattre(m);
+		
 	}
 	public String Interagir(Objet o) {
 		

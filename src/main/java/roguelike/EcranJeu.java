@@ -2,6 +2,7 @@ package roguelike;
 
 
 import java.awt.event.KeyEvent;
+import java.util.Objects;
 
 import asciiPanel.AsciiPanel;
 
@@ -66,8 +67,12 @@ public class EcranJeu implements InterfaceAffichage {
 					
 			terminal.writeCenter("RogueLike Game " ,1,AsciiPanel.red);
 	        afficherElements(terminal,left, top);
-	        terminal.writeCenter(messages, 43);
-
+	        if(Objects.equals(messages,"return")){
+	        	
+	        }
+	        else	
+	        	terminal.writeCenter(messages, 43);
+	        
 	       // String stats = String.format(" Niveau: "+"Points de vie: "+String.valueOf(pj.get_PV_actuel()));
 			//terminal.write(stats, 1, 44);
 			
@@ -90,13 +95,12 @@ public class EcranJeu implements InterfaceAffichage {
 	        switch (key.getKeyCode()){
 	        
 	        case KeyEvent.VK_ESCAPE: return new EcranPerdu();
-	        case KeyEvent.VK_ENTER: return new EcranGagnee();
-	        
+	        case KeyEvent.VK_ENTER: return new EcranGagnee();	        
 	        case KeyEvent.VK_LEFT:  action(-1, 0); break;
 			case KeyEvent.VK_RIGHT: action( 1, 0); break;
 			case KeyEvent.VK_UP:    action( 0,-1); break;
 			case KeyEvent.VK_DOWN:  action( 0, 1); break;
-			//case KeyEvent.VK_Z:  System.out.println(pj.interagirAll(this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()])); break;
+			case KeyEvent.VK_A:  this.messages=pj.Interagir((Monstre)this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]); break;
 			case KeyEvent.VK_Z:  this.messages=pj.interagirAll(this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]); break;
 
 	        }

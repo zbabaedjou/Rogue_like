@@ -1,4 +1,4 @@
-package roguelike;
+	package roguelike;
 
 import java.util.*;
 import java.util.Stack;
@@ -57,6 +57,7 @@ public class GenerUnivers {
 		
 		return new Univers(this.elements);
 	}
+	
 	
 	
 	/*Fonction de generation alléatoire de l'espace 
@@ -123,7 +124,7 @@ public class GenerUnivers {
 			    	priorite=(String)arrlist.get(r);
 			    	
 			    
-					if(x_actuel+2<this.width && priorite=="A") {// x+2 y+0
+					if((x_actuel+2<this.width-1) && priorite=="A") {// x+2 y+0
 						this.a_visiter_x.push(x_actuel+2);
 						this.a_visiter_y.push(y_actuel);
 						this.pere_x.push(x_actuel);
@@ -135,7 +136,7 @@ public class GenerUnivers {
 						this.pere_x.push(x_actuel);
 						this.pere_y.push(y_actuel);
 					}
-					if(y_actuel+2<this.height  && priorite=="C") {// x+0 y+2
+					if((y_actuel+2<this.height-1)  && priorite=="C") {// x+0 y+2
 						this.a_visiter_x.push(x_actuel);
 						this.a_visiter_y.push(y_actuel+2);
 						this.pere_x.push(x_actuel);
@@ -178,12 +179,12 @@ public class GenerUnivers {
 
 		
 		for (int i = 0; i <this.niveau+5; i++) {
-			// le nombre de tentative de creation de salle
+			// le nombre de tentative de creation de salles
 			
 			sizex=this.getRandomNumberInRange(5,tab.length/5);
 			sizey=this.getRandomNumberInRange(4,tab[0].length/5);
-			x1= this.getRandomNumberInRange(0,tab.length - sizex);
-			y1= this.getRandomNumberInRange(0,tab[0].length - sizey);
+			x1= this.getRandomNumberInRange(1,tab.length - sizex-1);
+			y1= this.getRandomNumberInRange(1,tab[0].length - sizey-1);
 			for (int x = x1; x < sizex; x++) {
 				for (int y = y1; y < sizey; y++) {
 					if(tab[x][y] ==1) droit=1;
