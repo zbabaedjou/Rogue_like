@@ -176,7 +176,7 @@ public class GenerUnivers {
 
 		
 		for (int i = 0; i <this.niveau+5; i++) {
-			// le nombre de tentative de creation de salle
+			// le nombre de tentative de creation de salles
 			
 			sizex=this.getRandomNumberInRange(5,tab.length/5);
 			sizey=this.getRandomNumberInRange(4,tab[0].length/5);
