@@ -18,29 +18,31 @@ public abstract class Vivant implements ElementUnivers{
 		return "";
 	}
 	public String Interagir(Objet o) {
-
-		String a_afficher ="";
+		
+		String a_afficher ="totot";
 		
 		if(o == Objet.MUR) {
-			 a_afficher = " c'est un MUR : "+o.get_symbole();
- 
+			return a_afficher = " c'est un MUR : "+o.get_symbole();
+			
 		}
 		if(o == Objet.POMME) {
-			 a_afficher = " c'est une POMME : "+o.get_symbole();
-			 this.set_PV_actuel(this.get_PV_actuel() + 15);
+			this.set_PV_actuel(this.get_PV_actuel() + 15);
+			return " c'est une POMME : "+o.get_symbole();
+			 
 
 		}
 		if(o == Objet.PARCHEMIN_DE_FORCE) {
-			 a_afficher = " vous avez utiliser une PARCHEMIN_DE_FORCE : "+o.get_symbole()+" \n HONTE A VOUS ne voulez vous donc aucun chalenge ?";
-			 this.set_attaque(get_attaque()+1);
+			this.set_attaque(get_attaque()+1);
+			return " vous avez utiliser une PARCHEMIN_DE_FORCE : "+o.get_symbole()+" \n HONTE A VOUS ne voulez vous donc aucun chalenge ?";
+			 
 		}
 		if(o == Objet.SOL) {
-			a_afficher = " il n'y a rien devan vous";
+			return " il n'y a rien devan vous";
 
 		}
 		
 		if(o == Objet.ESCALIER) {
-			a_afficher = " c'etait un ESCALIER : "+o.get_symbole()+" \n vous etes maintenat plus bas dans le donjon";
+			return " c'etait un ESCALIER : "+o.get_symbole()+" \n vous etes maintenant plus bas dans le donjon";
 			// creer une nouvelle map 
 			// replacer le joueur 
 		}
@@ -51,6 +53,16 @@ public abstract class Vivant implements ElementUnivers{
 		String a_afficher = j.repondre();
 		return a_afficher;
 		//afficher(a_afficher);
+	}
+	
+	public String interagirAll(ElementUnivers e){
+		if (e instanceof Objet)
+			return Interagir((Objet)e);
+		if (e instanceof Joueur)
+			return Interagir((Joueur)e);
+		if (e instanceof Monstre)
+			return Interagir((Monstre)e);
+		return "";
 	}
 	
 	public String combattre(Vivant v) {
@@ -68,32 +80,34 @@ public abstract class Vivant implements ElementUnivers{
 		return a_afficher;
 	}
 	public String combattre(Objet o) {
-		String a_afficher ="";
+		
 		
 		if(o == Objet.MUR) {
-			 a_afficher = " c'est un MUR : "+o.get_symbole()+"\nvous ne gagnerez pas contre lui";
+			return " c'est un MUR : "+o.get_symbole()+"\nvous ne gagnerez pas contre lui";
 		}
 		
 		if(o == Objet.POMME) {
-			 a_afficher = " vous avez detruit une POMME : "+o.get_symbole();
 			o=Objet.SOL;
+			return "vous avez detruit une POMME : "+o.get_symbole();
+			
 		}
 		if(o == Objet.PARCHEMIN_DE_FORCE) {
-			 a_afficher = " vous avez detruit une PARCHEMIN_DE_FORCE : "+o.get_symbole()+" \n HONTE A VOUS";
 			o=Objet.SOL;
+			return" vous avez detruit une PARCHEMIN_DE_FORCE : "+o.get_symbole()+" \n HONTE A VOUS";
+
 		}
 		
 		if(o == Objet.SOL) {
-			a_afficher = " il n'y a rien devan vous";
+			return" il n'y a rien devan vous";
 
 		}
 		
 		if(o == Objet.ESCALIER) {
-			a_afficher = " c'etait un ESCALIER : "+o.get_symbole()+"\n essayez d'interragir avec";
+			return " c'etait un ESCALIER : "+o.get_symbole()+"\n essayez d'interragir avec";
 			// creer une nouvelle map 
 			// replacer le joueur 
 		}
-	return a_afficher;
+	return "";
 //afficher(a_afficher);
 	}
 	

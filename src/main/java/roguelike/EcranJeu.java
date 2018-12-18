@@ -96,7 +96,9 @@ public class EcranJeu implements InterfaceAffichage {
 			case KeyEvent.VK_RIGHT: action( 1, 0); break;
 			case KeyEvent.VK_UP:    action( 0,-1); break;
 			case KeyEvent.VK_DOWN:  action( 0, 1); break;
-			
+			//case KeyEvent.VK_Z:  System.out.println(pj.interagirAll(this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()])); break;
+			case KeyEvent.VK_Z:  this.messages=pj.interagirAll(this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]); break;
+
 	        }
 	    
 	        return this;

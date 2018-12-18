@@ -19,21 +19,6 @@ public class PJ extends Joueur{
 	
 	public Color get_color() { return color; }
 	
-	// seul le joueur interragit differament avec un escalier
-	@Override
-	public String Interagir(Objet o) {
-		if (o == Objet.ESCALIER) {
-			// genere un nouveau niveau
-			
-			/*
-			
-			univers.elements = genere univers
-			replacer le joueur
-			
-			*/
-			
-		}
-	return "";
-	}
+	
 	
 }

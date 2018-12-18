@@ -26,6 +26,9 @@ public class GenerUnivers {
 	public Stack<Integer> pere_x;
 	public Stack<Integer> pere_y;
 	
+	public ElementUnivers[][] get_elements(){
+		return this.elements;
+	}
 	public GenerUnivers(int width, int height) {
 		this.width = width;
 		this.height = height;
