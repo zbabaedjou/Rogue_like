@@ -33,8 +33,8 @@ public class EcranJeu implements InterfaceAffichage {
 			
 			if(this.pj==null)
 				this.pj =univers.addPj();
-			else
-				this.pj=univers.addPj(pj);
+			//else
+				//this.pj=univers.addPj(pj);
 			
 		}
 		

@@ -34,7 +34,7 @@ public abstract class Vivant implements ElementUnivers{
 		}
 		if(o == Objet.PARCHEMIN_DE_FORCE) {
 			this.set_attaque(get_attaque()+1);
-			return " vous avez utiliser une PARCHEMIN_DE_FORCE : "+o.get_symbole()+" \n HONTE A VOUS ne voulez vous donc aucun chalenge ?";
+			return " vous avez utiliser une PARCHEMIN_DE_FORCE : "+o.get_symbole()+"   HONTE A VOUS ne voulez vous donc aucun chalenge ?";
 			 
 		}
 		if(o == Objet.SOL) {
@@ -101,7 +101,7 @@ public abstract class Vivant implements ElementUnivers{
 		
 		
 		if(o == Objet.MUR) {
-			return " c'est un MUR : "+o.get_symbole()+"\nvous ne gagnerez pas contre lui";
+			return " c'est un MUR : "+o.get_symbole()+"  vous ne gagnerez pas contre lui";
 		}
 		
 		if(o == Objet.POMME) {
@@ -111,7 +111,7 @@ public abstract class Vivant implements ElementUnivers{
 		}
 		if(o == Objet.PARCHEMIN_DE_FORCE) {
 			o=Objet.SOL;
-			return" vous avez detruit une PARCHEMIN_DE_FORCE : "+o.get_symbole()+" \n HONTE A VOUS";
+			return" vous avez detruit une PARCHEMIN_DE_FORCE : "+o.get_symbole()+"  HONTE A VOUS";
 
 		}
 		
@@ -121,7 +121,7 @@ public abstract class Vivant implements ElementUnivers{
 		}
 		
 		if(o == Objet.ESCALIER) {
-			return " c'etait un ESCALIER : "+o.get_symbole()+"\n essayez d'interragir avec";
+			return " c'etait un ESCALIER : "+o.get_symbole()+" essayez d'interragir avec";
 			// creer une nouvelle map 
 			// replacer le joueur 
 		}
