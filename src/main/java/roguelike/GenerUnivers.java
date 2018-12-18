@@ -3,24 +3,27 @@
 import java.util.*;
 import java.util.Stack;
 import java.util.Random;
-// objectif 
-
-// 1 genere un perfect maze = aucune case n'est innacessible
-//   1.1 backtracking version avec des trous (4/25 non_exploré)
-//       theoriquement inaccessibles mais 
-//       la generation de sale ignorera ce defaut
-// 2 faire des salles numeroté( percage )
-// 		une liste de sale (nouvelle class ?)
-// 3 placer le joueur dans la sale 1 
-// 4 placer l'escalier dans la derniere sale
-// 5 placer des monstres dans les salles
+/**
+ * objectif 
+ * @author Ziadath BABAEDJOU, Benjamin MATIR, Fatou NDEYE
+ * 
+ * 1 genere un perfect maze = aucune case n'est innacessible
+ * 1.1 backtracking version avec des trous (4/25 non_exploré)
+       theoriquement inaccessibles mais 
+       la generation de sale ignorera ce defaut
+  2 faire des salles numeroté( percage )
+ 		une liste de sale (nouvelle class ?)
+ 3 placer le joueur dans la sale 1 
+ 4 placer l'escalier dans la derniere sale
+ 5 placer des monstres dans les salles
+ *
+ */ 
 
 public class GenerUnivers {
-	private int width;// largeur
-	private int height;// longeur
+	private int width;
+	private int height;
 	private int niveau;
 	private ElementUnivers[][] elements;
-	// maze variables
 	public Stack<Integer> a_visiter_x;
 	public Stack<Integer> a_visiter_y;
 	public Stack<Integer> pere_x;

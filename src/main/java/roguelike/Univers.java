@@ -81,6 +81,27 @@ public class Univers {
 	}
 	
 	/**
+     * Ajoute un joueur avec des paramettres spécifiques dans le tableau d'éléments
+     * @param un PJ
+     * @return une Personne Joueur
+     */
+	public PJ addPj(PJ j){
+		int x;
+		int y;
+		
+		do{
+			x = (int)(Math.random() * width);
+			y = (int)(Math.random() * height);
+			
+		}while(elements[x][y] != Objet.SOL);
+		pj=new PJ(x,y);
+		elements[x][y]=pj;
+		return pj;
+			
+	}
+	
+	
+	/**
      * Ajoute un personnage non joueur dans le tableau d'éléments
      */
 	public void addPnj(){

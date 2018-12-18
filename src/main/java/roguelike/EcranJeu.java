@@ -23,7 +23,6 @@ public class EcranJeu implements InterfaceAffichage {
 			messages = "";
 		}
 		
-		
 		/**Création de l'univers
 		 * Instantiation de l'univers en faisant usage de la fonction 
 		 * generer de GenerUniver
@@ -31,10 +30,15 @@ public class EcranJeu implements InterfaceAffichage {
 		 */		
 		public void createUnivers(){
 			univers = new GenerUnivers(screenWidth, screenHeight).generer();
-			pj=univers.addPj();
-			//univers.addMonstre();
-			//univers.addPnj();
+			
+			if(this.pj==null)
+				this.pj =univers.addPj();
+			else
+				this.pj=univers.addPj(pj);
+			
 		}
+		
+		
 		
 		
 		
@@ -67,19 +71,26 @@ public class EcranJeu implements InterfaceAffichage {
 					
 			terminal.writeCenter("RogueLike Game " ,1,AsciiPanel.red);
 	        afficherElements(terminal,left, top);
-	        if(Objects.equals(messages,"return")){
-	        	
-	        }
-	        else	
-	        	terminal.writeCenter(messages, 43);
 	        
-	       // String stats = String.format(" Niveau: "+"Points de vie: "+String.valueOf(pj.get_PV_actuel()));
-			//terminal.write(stats, 1, 44);
+	        if(this.messages.equals("Escalier")){
+	        	createUnivers();
+	        	System.out.println("tgh");
+	        	afficherElements(terminal,left, top);
+	        	this.messages="Bravo!!! Vous venez de franchire une étape.";
+	        }
+	        	
+	        terminal.writeCenter(this.messages, 43);
+	        
+	       String stats = String.format(" Niveau: "+"Points de vie: "+String.valueOf(pj.get_PV_actuel()));
+	       terminal.write(stats, 1, 44);
 			
 			
-	        terminal.writeCenter("-- press [escape] to lose or [enter] to win --", 45);
 	        if (subscreen != null)
-				subscreen.displayOutput(terminal);	    }
+				subscreen.displayOutput(terminal);	   
+	     
+		}
+		
+		
 		
 		public void action(int x, int y){
 			
@@ -101,7 +112,8 @@ public class EcranJeu implements InterfaceAffichage {
 			case KeyEvent.VK_UP:    action( 0,-1); break;
 			case KeyEvent.VK_DOWN:  action( 0, 1); break;
 			case KeyEvent.VK_A:  this.messages=pj.Interagir((Monstre)this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]); break;
-			case KeyEvent.VK_Z:  this.messages=pj.interagirAll(this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]); break;
+			case KeyEvent.VK_Z:  this.messages=pj.interagirAll(this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]); 
+									 break;
 
 	        }
 	    

@@ -43,7 +43,7 @@ public abstract class Vivant implements ElementUnivers{
 		}
 		
 		if(o == Objet.ESCALIER) {
-			return " c'etait un ESCALIER : "+o.get_symbole()+" \n vous etes maintenant plus bas dans le donjon";
+			return "Escalier";
 			// creer une nouvelle map 
 			// replacer le joueur 
 		}
