@@ -67,8 +67,7 @@ public class EcranJeu implements InterfaceAffichage {
 		public void displayOutput(AsciiPanel terminal) {
 	    	int left = 10;
 			int top = 5; 
-			
-					
+								
 			terminal.writeCenter("RogueLike Game " ,1,AsciiPanel.red);
 	        afficherElements(terminal,left, top);
 	        
