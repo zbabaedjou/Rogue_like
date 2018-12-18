@@ -1,4 +1,5 @@
-//Classe Test
+//Classe Test/*
+/*
 package roguelike;
 
 import static org.junit.Assert.*;
@@ -33,3 +34,4 @@ private GenerUnivers gener;
 	}
 
 }
+*/

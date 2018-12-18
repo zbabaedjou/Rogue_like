@@ -1,4 +1,4 @@
-package roguelike;
+	package roguelike;
 
 import java.util.*;
 import java.util.Stack;
@@ -54,6 +54,7 @@ public class GenerUnivers {
 		
 		return new Univers(this.elements);
 	}
+	
 	
 	
 	/*Fonction de generation alléatoire de l'espace 
@@ -120,7 +121,7 @@ public class GenerUnivers {
 			    	priorite=(String)arrlist.get(r);
 			    	
 			    
-					if(x_actuel+2<this.width && priorite=="A") {// x+2 y+0
+					if((x_actuel+2<this.width-1) && priorite=="A") {// x+2 y+0
 						this.a_visiter_x.push(x_actuel+2);
 						this.a_visiter_y.push(y_actuel);
 						this.pere_x.push(x_actuel);
@@ -132,7 +133,7 @@ public class GenerUnivers {
 						this.pere_x.push(x_actuel);
 						this.pere_y.push(y_actuel);
 					}
-					if(y_actuel+2<this.height  && priorite=="C") {// x+0 y+2
+					if((y_actuel+2<this.height-1)  && priorite=="C") {// x+0 y+2
 						this.a_visiter_x.push(x_actuel);
 						this.a_visiter_y.push(y_actuel+2);
 						this.pere_x.push(x_actuel);
