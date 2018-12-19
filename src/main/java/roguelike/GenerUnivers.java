@@ -57,6 +57,7 @@ public class GenerUnivers {
 		this.creerSalles(salles);
 		this.ajout_monstres(salles);
 		this.addEscalier(salles);
+		this.addPomme();
 		
 		return new Univers(this.elements);
 	}
@@ -224,12 +225,29 @@ public class GenerUnivers {
 	
 	public ElementUnivers[][] ajout_monstres(int[][] tab_salle) {
 		int chance=10;
+	      List<String> arrlist = new ArrayList<String>();
+	      String priorite="A";
+	      arrlist.add("A");
+		  arrlist.add("B");
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				if(est_dans_salle(tab_salle, x, y)&& (this.elements[x][y]== Objet.SOL))
 					
-					if( chance > this.getRandomNumberInRange(0,100))
-						this.elements[x][y] =  new Golbin( x,  y);
+					if( chance > this.getRandomNumberInRange(0,100)){
+						
+						Collections.shuffle(arrlist);
+				    	priorite=(String)arrlist.get(0);
+				    	
+					    
+						if( priorite=="A") {// x+2 y+0
+							this.elements[x][y] =  new Golbin( x,  y);
+						}
+						if(priorite=="B") {// x-2 y+0
+							this.elements[x][y] =  new Zombie( x,  y);
+						}
+						
+					}
+					
 			}
 		}
 		return elements;
@@ -248,8 +266,41 @@ public class GenerUnivers {
 		}
 		
 		elements[x][y]=Objet.ESCALIER;
+
 		
-			
+		
 	}
+	public void addPomme(){
+		int x;
+		int y;
+		x = (int)(Math.random() * width);
+		y = (int)(Math.random() * height);
+		for(int w=0;w<5;w++){
+			
+			while( ( (elements[x][y] != Objet.SOL) ))
+			{
+				x = (int)(Math.random() * width);
+				y = (int)(Math.random() * height);
+				
+			}
+			elements[x][y]=Objet.POMME;
+		}
+		
+		
+
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//////////////     //////////
 }

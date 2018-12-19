@@ -3,7 +3,6 @@ package roguelike;
 
 import java.awt.event.KeyEvent;
 import java.util.Objects;
-
 import asciiPanel.AsciiPanel;
 
 public class EcranJeu implements InterfaceAffichage {
@@ -72,18 +71,20 @@ public class EcranJeu implements InterfaceAffichage {
 			int top = 5; 
 								
 			terminal.writeCenter("RogueLike Game " ,1,AsciiPanel.red);
+
 	        afficherElements(terminal,left, top);
 	        
 	        if(this.messages.equals("Escalier")){
 	        	createUnivers();
 	        	afficherElements(terminal,left, top);
-	        	this.messages="Bravo!!! Vous venez de franchire une étape.";
+	        	this.messages="Bravo!!! Vous venez de franchire une Etape.";
 	        }
+		    terminal.writeCenter(" Niveau: "+this.niveau, 3);
 	        	
 	        terminal.writeCenter(this.messages, 43);
 	        
-	       String stats = String.format(" Niveau: "+this.niveau+"  Points de vie: "+String.valueOf(pj.get_PV_actuel()));
-	       terminal.write(stats, 1, 44);
+	       terminal.write("  Points de vie: "+String.valueOf(pj.get_PV_actuel()), 1, 46);
+	       terminal.write(" Appuyez sur ECHAPE pour quitter le jeu", 55, 46);
 			
 			
 	        if (subscreen != null)
@@ -93,7 +94,7 @@ public class EcranJeu implements InterfaceAffichage {
 		
 		
 		
-		public void action(int x, int y){
+		public void bouger(int x, int y){
 			
 			this.messages=this.pj.se_deplacer(x, y, this.univers.elements[this.pj.getX()+x][this.pj.getY()+y], this.univers);
 			
@@ -113,6 +114,12 @@ public class EcranJeu implements InterfaceAffichage {
 			
 		}
 		
+		public void interagir(){
+			this.messages=pj.interagirAll(this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]);
+			if(this.messages.contains(" est mort") || this.messages.contains("c'est une POMME"))				
+				this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]=Objet.SOL;
+		}
+		
 		/**
 		 * Gerer les interactions entre le joueur et le programme
 		 */
@@ -121,16 +128,17 @@ public class EcranJeu implements InterfaceAffichage {
 	        
 	        case KeyEvent.VK_ESCAPE: return new EcranPerdu();
 	        case KeyEvent.VK_ENTER: return new EcranGagnee();	        
-	        case KeyEvent.VK_LEFT:  action(-1, 0); break;
-			case KeyEvent.VK_RIGHT: action( 1, 0); break;
-			case KeyEvent.VK_UP:    action( 0,-1); break;
-			case KeyEvent.VK_DOWN:  action( 0, 1); break;
+	        case KeyEvent.VK_LEFT:  bouger(-1, 0); break;
+			case KeyEvent.VK_RIGHT: bouger( 1, 0); break;
+			case KeyEvent.VK_UP:    bouger( 0,-1); break;
+			case KeyEvent.VK_DOWN:  bouger( 0, 1); break;
 			case KeyEvent.VK_A:  this.combattre(); break;								  
-			case KeyEvent.VK_Z:  this.messages=pj.interagirAll(this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]); break;
+			case KeyEvent.VK_Z:  interagir(); break;
 			case KeyEvent.VK_R:  this.ramasser(); break; //Benjamin
 
 	        }
-	    
+	        if (this.pj.get_PV_actuel()< 1)
+				return new EcranPerdu();
 	        return this;
 	    }
 	

@@ -8,17 +8,12 @@ import asciiPanel.AsciiPanel;
 public enum Objet implements ElementUnivers{
     SOL((char)250, AsciiPanel.yellow),
     MUR((char)177, AsciiPanel.yellow),
-	POMME('p',AsciiPanel.white),
+	POMME((char)233,AsciiPanel.green),
 	PARCHEMIN_DE_FORCE('?',AsciiPanel.white),
-	ESCALIER('E',AsciiPanel.white);
-    //ARBRE((char)5, AsciiPanel.yellow);
-    //PIECES((char)233, AsciiPanel.red),
-   // BOUNDS('x', AsciiPanel.brightBlack);
+	ESCALIER('E',AsciiPanel.white);    
     
 	
-	//private int x;
-	//private int y;
-    private char symbole;
+	private char symbole;
     private Color color;
     
     public char get_symbole() { return symbole; }

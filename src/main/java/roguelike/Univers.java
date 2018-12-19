@@ -94,7 +94,10 @@ public class Univers {
 			y = (int)(Math.random() * height);
 			
 		}while(elements[x][y] != Objet.SOL);
+		j.setX(x);
+		j.setY(y);
 		elements[x][y]=j;
+		
 		return j;
 			
 	}
