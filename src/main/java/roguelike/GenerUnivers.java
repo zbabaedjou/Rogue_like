@@ -159,7 +159,7 @@ public class GenerUnivers {
 		return elements;
 	}// end mazing
 	
-	private int getRandomNumberInRange(int min, int max) {// [min,max]
+	public int getRandomNumberInRange(int min, int max) {// [min,max]
 
 		if (min >= max) {
 			throw new IllegalArgumentException("max must be greater than min");

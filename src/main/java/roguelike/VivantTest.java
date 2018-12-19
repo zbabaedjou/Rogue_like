@@ -32,7 +32,7 @@ public class VivantTest {
 			}
 		}
 		
-		assertEquals(" c'est un MUR : ", j.Interagir((Objet)u.get_elements()[1][1]) );
+		assertEquals(" c'est un MUR : "+Objet.MUR.get_symbole(), j.Interagir((Objet)u.get_elements()[1][1]) );
 		
 	}
 

@@ -2,7 +2,6 @@ package roguelike;
 
 
 import java.awt.event.KeyEvent;
-import java.util.Objects;
 import asciiPanel.AsciiPanel;
 
 public class EcranJeu implements InterfaceAffichage {
@@ -38,9 +37,7 @@ public class EcranJeu implements InterfaceAffichage {
 				this.pj=univers.addPj(this.pj);
 			this.niveau++;
 			
-		}
-		
-		
+		}		
 		
 		
 		
