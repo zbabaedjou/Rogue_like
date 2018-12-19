@@ -94,9 +94,8 @@ public class Univers {
 			y = (int)(Math.random() * height);
 			
 		}while(elements[x][y] != Objet.SOL);
-		pj=new PJ(x,y);
-		elements[x][y]=pj;
-		return pj;
+		elements[x][y]=j;
+		return j;
 			
 	}
 	

@@ -12,15 +12,17 @@ public class EcranJeu implements InterfaceAffichage {
 		private int screenHeight;
 		private Univers univers;
 		private PJ pj;
+		private int niveau;
 		private InterfaceAffichage subscreen;
 		private String messages;
 		
 		//créer tableau monstres
 		public EcranJeu(){
-			screenWidth = 80;
-			screenHeight = 30;
-			createUnivers();
-			messages = "";
+			this.screenWidth = 80;
+			this.screenHeight = 30;
+			this.createUnivers();
+			this.niveau=1;
+			this.messages = "";
 		}
 		
 		/**Création de l'univers
@@ -34,7 +36,8 @@ public class EcranJeu implements InterfaceAffichage {
 			if(this.pj==null)
 				this.pj =univers.addPj();
 			else
-				this.pj=univers.addPj(pj);
+				this.pj=univers.addPj(this.pj);
+			this.niveau++;
 			
 		}
 		
@@ -73,14 +76,13 @@ public class EcranJeu implements InterfaceAffichage {
 	        
 	        if(this.messages.equals("Escalier")){
 	        	createUnivers();
-	        	System.out.println("tgh");
 	        	afficherElements(terminal,left, top);
 	        	this.messages="Bravo!!! Vous venez de franchire une étape.";
 	        }
 	        	
 	        terminal.writeCenter(this.messages, 43);
 	        
-	       String stats = String.format(" Niveau: "+"Points de vie: "+String.valueOf(pj.get_PV_actuel()));
+	       String stats = String.format(" Niveau: "+this.niveau+"  Points de vie: "+String.valueOf(pj.get_PV_actuel()));
 	       terminal.write(stats, 1, 44);
 			
 			
@@ -93,10 +95,23 @@ public class EcranJeu implements InterfaceAffichage {
 		
 		public void action(int x, int y){
 			
-			this.messages=pj.se_deplacer(x, y, this.univers.elements[pj.getX()+x][pj.getY()+y], this.univers);
+			this.messages=this.pj.se_deplacer(x, y, this.univers.elements[this.pj.getX()+x][this.pj.getY()+y], this.univers);
 			
 		}
-
+		public void ramasser(){
+			this.messages=this.pj.ramasser((Objet)this.univers.elements[this.pj.get_direction_x()+this.pj.getX()][this.pj.get_direction_y()+this.pj.getY()]);
+			
+			if(this.messages.contains("YUMM vous"))
+					this.univers.elements[this.pj.get_direction_x()+this.pj.getX()][this.pj.get_direction_y()+this.pj.getY()]=Objet.SOL;
+			
+		}
+		
+		public void combattre(){
+			this.messages=pj.combattreAll(this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]);
+			if(this.messages.contains(" est mort"))				
+				this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]=Objet.SOL;
+			
+		}
 		
 		/**
 		 * Gerer les interactions entre le joueur et le programme
@@ -110,9 +125,9 @@ public class EcranJeu implements InterfaceAffichage {
 			case KeyEvent.VK_RIGHT: action( 1, 0); break;
 			case KeyEvent.VK_UP:    action( 0,-1); break;
 			case KeyEvent.VK_DOWN:  action( 0, 1); break;
-			case KeyEvent.VK_A:  this.messages=pj.Interagir((Monstre)this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]); break;
-			case KeyEvent.VK_Z:  this.messages=pj.interagirAll(this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]); 
-									 break;
+			case KeyEvent.VK_A:  this.combattre(); break;								  
+			case KeyEvent.VK_Z:  this.messages=pj.interagirAll(this.univers.elements[pj.get_direction_x()+pj.getX()][pj.get_direction_y()+pj.getY()]); break;
+			case KeyEvent.VK_R:  this.ramasser(); break; //Benjamin
 
 	        }
 	    

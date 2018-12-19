@@ -20,7 +20,7 @@ public abstract class Vivant implements ElementUnivers{
 	}
 	public String Interagir(Objet o) {
 		
-		String a_afficher ="totot";
+		String a_afficher ="";
 		
 		if(o == Objet.MUR) {
 			return a_afficher = " c'est un MUR : "+o.get_symbole();
@@ -34,7 +34,7 @@ public abstract class Vivant implements ElementUnivers{
 		}
 		if(o == Objet.PARCHEMIN_DE_FORCE) {
 			this.set_attaque(get_attaque()+1);
-			return " vous avez utiliser une PARCHEMIN_DE_FORCE : "+o.get_symbole()+" \n HONTE A VOUS ne voulez vous donc aucun chalenge ?";
+			return " vous avez utiliser une PARCHEMIN_DE_FORCE : "+o.get_symbole()+"   HONTE A VOUS ne voulez vous donc aucun chalenge ?";
 			 
 		}
 		if(o == Objet.SOL) {
@@ -56,6 +56,13 @@ public abstract class Vivant implements ElementUnivers{
 		//afficher(a_afficher);
 	}
 	
+	public String combattreAll(ElementUnivers e){
+		if (e instanceof Objet)
+			return combattre((Objet)e);
+		if (e instanceof Vivant)
+			return combattre((Vivant)e);
+		return "";
+	}
 	public String interagirAll(ElementUnivers e){
 		if (e instanceof Objet)
 			return Interagir((Objet)e);
@@ -68,23 +75,44 @@ public abstract class Vivant implements ElementUnivers{
 	
 	public String combattre(Vivant v) {
 		String a_afficher ="";
-		if (this.get_attaque() > v.get_armure()) {
-			v.set_PV_actuel(v.get_PV_actuel() - (this.get_attaque() - v.get_armure()));
-			a_afficher=this.get_symbole()+" dealt "+(v.get_PV_actuel() - (this.get_attaque() - v.get_armure()))+" to " + v.get_symbole();
-		}
-			// ici on  suppose que les etres vivant rippostent toujours
-		if (v.get_attaque() > this.get_armure()) {
-			this.set_PV_actuel(this.get_PV_actuel() - (v.get_attaque() - this.get_armure()));
-			a_afficher=a_afficher+	v.get_symbole()+" dealt "+(this.get_PV_actuel() - (v.get_attaque() - this.get_armure()))+" to " + this.get_symbole();
-	
+		if(v.get_PV_actuel()>0) {
+			if (this.get_attaque() > v.get_armure()) {
+				v.set_PV_actuel(v.get_PV_actuel() -  (this.get_attaque() - v.get_armure()));
+				a_afficher=this.get_symbole()+" dealt "+( (this.get_attaque() - v.get_armure()))+" to " + v.get_symbole()+"   ";
+			}
+				// ici on  suppose que les etres vivant rippostent toujours
+			if (v.get_attaque() > this.get_armure()) {
+				this.set_PV_actuel(this.get_PV_actuel() -  (v.get_attaque() - this.get_armure()));
+				a_afficher=a_afficher+	v.get_symbole()+" dealt "+( (v.get_attaque() - this.get_armure()))+" to " + this.get_symbole();
 					}
+		}
+		if(this.get_PV_actuel()<=0 && v.get_PV_actuel()<=0) {
+			a_afficher="fin";
+		}
+		if(this.get_PV_actuel()<=0 && v.get_PV_actuel()> 0) {
+			a_afficher="fin";
+		}
+		if(this.get_PV_actuel()>0 && v.get_PV_actuel()<=0) {
+			a_afficher=v.get_symbole()+" est mort";
+		}
 		return a_afficher;
 	}
+	
+	public String ramasser(Objet o){
+		if(o == Objet.POMME) {
+			o=Objet.SOL;
+			return "YUMM vous venez de bouffer une POMME, vous gagnez : "+o.get_symbole()+" points";
+			
+		}
+		else
+			return "Ceci n'est pas un fruit.";
+	}
+	
 	public String combattre(Objet o) {
 		
 		
 		if(o == Objet.MUR) {
-			return " c'est un MUR : "+o.get_symbole()+"\nvous ne gagnerez pas contre lui";
+			return " c'est un MUR : "+o.get_symbole()+"  vous ne gagnerez pas contre lui";
 		}
 		
 		if(o == Objet.POMME) {
@@ -94,7 +122,7 @@ public abstract class Vivant implements ElementUnivers{
 		}
 		if(o == Objet.PARCHEMIN_DE_FORCE) {
 			o=Objet.SOL;
-			return" vous avez detruit une PARCHEMIN_DE_FORCE : "+o.get_symbole()+" \n HONTE A VOUS";
+			return" vous avez detruit une PARCHEMIN_DE_FORCE : "+o.get_symbole()+"  HONTE A VOUS";
 
 		}
 		
@@ -104,7 +132,7 @@ public abstract class Vivant implements ElementUnivers{
 		}
 		
 		if(o == Objet.ESCALIER) {
-			return " c'etait un ESCALIER : "+o.get_symbole()+"\n essayez d'interragir avec";
+			return " c'etait un ESCALIER : "+o.get_symbole()+" essayez d'interragir avec";
 			// creer une nouvelle map 
 			// replacer le joueur 
 		}

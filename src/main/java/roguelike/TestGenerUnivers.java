@@ -1,3 +1,4 @@
+package roguelike;
 //Classe Test/*
 /*
 package roguelike;
