@@ -2,6 +2,7 @@ package roguelike;
 
 
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.Objects;
 import asciiPanel.AsciiPanel;
 
@@ -134,6 +135,14 @@ public class EcranJeu implements InterfaceAffichage {
 			case KeyEvent.VK_DOWN:  bouger( 0, 1); break;
 			case KeyEvent.VK_A:  this.combattre(); break;								  
 			case KeyEvent.VK_Z:  interagir(); break;
+			case KeyEvent.VK_S:  try {
+					this.univers.save();
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					
+					e.printStackTrace();
+				} break;
 			case KeyEvent.VK_R:  this.ramasser(); break; //Benjamin
 
 	        }
