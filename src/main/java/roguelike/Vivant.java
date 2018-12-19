@@ -53,7 +53,9 @@ public abstract class Vivant implements ElementUnivers{
 		}
 		
 		if(o == Objet.SOL) {
-			return " il n'y a rien devan vous";
+
+			return " il n'y a rien devant vous";
+
 		}
 		
 		if(o == Objet.ESCALIER) {
