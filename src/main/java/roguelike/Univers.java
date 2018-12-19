@@ -186,7 +186,7 @@ public class Univers {
 					writer.write(s);
 					s="";
 				}
-				System.out.println("x : "+ x+ "y : "+y);
+				
 				
 				s=s+elements[x][y].get_symbole()+"\n";
 				writer.write(s);
@@ -204,13 +204,16 @@ public class Univers {
 		
 
 	  	File f = new File("save.txt");
-	  	System.out.println("le fichier save est ici  :  "+ f.getAbsolutePath());
+	  	System.out.println("le fichier a charger est ici  :  "+ f.getAbsolutePath());
 
 		Reader reader = new FileReader("save.txt");
 		try {
-			while(int_actuel != (int)'\n') {
+			System.out.println("avant les int "+(int)'\n');
+			while(int_actuel >47 && int_actuel <58 ) {
 				int_actuel=int_actuel*10 +reader.read();
+				System.out.println("apres le premier test"+int_actuel);
 			}
+			System.out.println("apres le premier test");
 			this.width=int_actuel;
 			int_actuel=0;
 			
@@ -270,12 +273,13 @@ public class Univers {
 			int_actuel=0;
 			
 	
-			
+			System.out.println("avant le tableau");
 			int y;
 			int x;
 			for (x = 0; x < width; x++) {
 				for (y = 0; y < height-1; y++) {
 					int_actuel=reader.read();
+					System.out.println(" chargement ");
 					if(int_actuel==250) {
 						elements[x][y] =  Objet.SOL;
 					}
@@ -306,9 +310,6 @@ public class Univers {
 					reader.read();
 				}
 			
-				s=s+elements[x][y].get_symbole()+"\n";
-				//writer.write(s);
-				s="";
 			}
 			
 			
