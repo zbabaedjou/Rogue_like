@@ -7,8 +7,8 @@ import asciiPanel.AsciiPanel;
 public class EcranPerdu implements InterfaceAffichage {
 
     public void displayOutput(AsciiPanel terminal) {
-        terminal.write("You lost.", 1, 1);
-        terminal.writeCenter("-- press [enter] to restart --", 22);
+        terminal.writeCenter("Vous avez Perdu", 10);
+        terminal.writeCenter("ENTRER: Reprendre", 22);
     }
 
     public InterfaceAffichage respondToUserInput(KeyEvent key) {

@@ -3,7 +3,6 @@ package roguelike;
 
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.util.Objects;
 import asciiPanel.AsciiPanel;
 
 public class EcranJeu implements InterfaceAffichage {
@@ -82,12 +81,13 @@ public class EcranJeu implements InterfaceAffichage {
 	        }
 		    terminal.writeCenter(" Niveau: "+this.niveau, 3);
 	        	
-	        terminal.writeCenter(this.messages, 43);
+	        terminal.writeCenter(this.messages, 40);
 	        
-	       terminal.write("  Points de vie: "+String.valueOf(pj.get_PV_actuel()), 1, 46);
-	       terminal.write(" Appuyez sur ECHAPE pour quitter le jeu", 55, 46);
-			
-			
+	        terminal.write("  Points de vie: "+String.valueOf(pj.get_PV_actuel()), 1, 44);
+	        terminal.write(" C: Restaurer la partie", 60, 44);
+		    terminal.write(" S: Sauvegarder la partie", 60, 45);	       
+		    terminal.write(" ECHAP: Quitter le jeu", 60, 46);
+	       
 	        if (subscreen != null)
 				subscreen.displayOutput(terminal);	   
 	     

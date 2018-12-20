@@ -164,7 +164,6 @@ public class Univers {
 	 
 
 	  	File f = new File("save.txt");
-	  	System.out.println("le fichier save est ici  :  "+ f.getAbsolutePath());
 		Charset charset = Charset.forName("UTF-8");
 		Writer writer = new OutputStreamWriter(new FileOutputStream(f), charset);
 		try {
@@ -212,8 +211,6 @@ public class Univers {
 		int int_stock=0;
 
 	  	File f = new File("save.txt");
-	  	System.out.println("le fichier a charger est ici  :  "+ f.getAbsolutePath());
-
 		Reader reader = new FileReader("save.txt");
 		try {
 			
