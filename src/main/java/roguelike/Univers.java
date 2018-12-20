@@ -161,7 +161,7 @@ public class Univers {
 
 	      
 	    
-	      FileOutputStream fos = null;
+	 
 
 	  	File f = new File("save.txt");
 	  	System.out.println("le fichier save est ici  :  "+ f.getAbsolutePath());
@@ -188,7 +188,7 @@ public class Univers {
 				}
 				
 				
-				s=s+elements[x][y].get_symbole()+"\n";
+				s=s+elements[x][y].get_symbole()+(char)13;
 				writer.write(s);
 				s="";
 			}
@@ -198,105 +198,159 @@ public class Univers {
 			writer.close();
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	public void load() throws IOException {
-		String s="";
-		int int_actuel=50;
 		
+		int int_actuel=0;
+		int int_stock=0;
 
 	  	File f = new File("save.txt");
 	  	System.out.println("le fichier a charger est ici  :  "+ f.getAbsolutePath());
 
 		Reader reader = new FileReader("save.txt");
 		try {
-			System.out.println("avant les int "+(int)'\n');
-			while(int_actuel >47 && int_actuel <58 ) {
-				int_actuel=int_actuel*10 +reader.read();
-				System.out.println("apres le premier test"+int_actuel);
-			}
-			System.out.println("apres le premier test");
-			this.width=int_actuel;
-			int_actuel=0;
 			
-			while(int_actuel != (int)'\n') {
-				int_actuel=int_actuel*10 +reader.read();
-			}
-			this.height=int_actuel;
-			int_actuel=0;
-			
-			
-			while(int_actuel != (int)'\n') {
-				int_actuel=int_actuel*10 +reader.read();
-			}
-			this.pj.setX(int_actuel);
-			int_actuel=0;
-			
-			while(int_actuel != (int)'\n') {
-				int_actuel=int_actuel*10 +reader.read();
-			}
-			this.pj.setY(int_actuel);
-			int_actuel=0;
-			
-			while(int_actuel != (int)'\n') {
-				int_actuel=int_actuel*10 +reader.read();
-			}
-			this.pj.set_PV_actuel(int_actuel);
-			int_actuel=0;
-			
-			while(int_actuel != (int)'\n') {
-				int_actuel=int_actuel*10 +reader.read();
-			}
-			this.pj.set_attaque(int_actuel);
-			int_actuel=0;
-			
-			while(int_actuel != (int)'\n') {
-				int_actuel=int_actuel*10 +reader.read();
-			}
-			this.pj.set_armure(int_actuel);
-			int_actuel=0;
-			
-			while(int_actuel != (int)'\n') {
-				int_actuel=int_actuel*10 +reader.read();
-			}
-			this.pj.set_xp_value(int_actuel);
-			int_actuel=0;
-			
-			while(int_actuel != (int)'\n') {
-				int_actuel=int_actuel*10 +reader.read();
-			}
-			this.pj.set_direction_x(int_actuel);
-			int_actuel=0;
-			
-			while(int_actuel != (int)'\n') {
-				int_actuel=int_actuel*10 +reader.read();
-			}
-			this.pj.set_direction_y(int_actuel);
-			int_actuel=0;
 			
 	
-			System.out.println("avant le tableau");
+			while(int_actuel != 13 ) {
+				int_actuel=reader.read();
+				if(int_actuel != 13 )
+				int_stock=int_stock*10+(int_actuel-48);
+			
+			}
+			
+			this.width=int_stock;
+			
+			int_stock=0;
+			int_actuel=0;
+			
+			while(int_actuel != 13 ){
+				
+				int_actuel=reader.read();
+				if(int_actuel != 13 )
+				int_stock=int_stock*10+(int_actuel-48);
+			}
+			this.height=int_stock;
+		
+			int_stock=0;
+			int_actuel=0;
+			
+			
+			while(int_actuel != 13 ){
+				int_actuel=reader.read();
+				if(int_actuel != 13 )
+				int_stock=int_stock*10+(int_actuel-48);
+			}
+			this.pj.setX(int_stock);
+			int_stock=0;
+			int_actuel=0;
+			
+			while(int_actuel != 13 ){
+				int_actuel=reader.read();
+				if(int_actuel != 13 )
+				int_stock=int_stock*10+(int_actuel-48);
+			}
+			
+			this.pj.setY(int_stock);
+			
+			int_stock=0;
+			int_actuel=0;
+			
+			while(int_actuel != 13 ){
+				int_actuel=reader.read();
+				if(int_actuel != 13 )
+				int_stock=int_stock*10+(int_actuel-48);
+			}
+			this.pj.set_PV_actuel(int_stock);
+			
+			int_stock=0;
+			int_actuel=0;
+			
+			while(int_actuel != 13 ){
+				int_actuel=reader.read();
+				if(int_actuel != 13 )
+				int_stock=int_stock*10+(int_actuel-48);
+			}
+			this.pj.set_attaque(int_stock);
+			int_stock=0;
+			int_actuel=0;
+			
+			while(int_actuel != 13 ){
+				int_actuel=reader.read();
+				if(int_actuel != 13 )
+				int_stock=int_stock*10+(int_actuel-48);
+			}
+			this.pj.set_armure(int_stock);
+			int_stock=0;
+			int_actuel=0;
+			
+			while(int_actuel != 13 ){
+				int_actuel=reader.read();
+				if(int_actuel != 13 )
+				int_stock=int_stock*10+(int_actuel-48);
+			}
+			this.pj.set_xp_value(int_stock);
+			int_stock=0;
+			int_actuel=0;
+			
+			while(int_actuel != 13 ){
+				int_actuel=reader.read();
+				if(int_actuel != 13 )
+				int_stock=int_stock*10+(int_actuel-48);
+				
+			}
+			this.pj.set_direction_x(0);
+			int_stock=0;
+			int_actuel=0;
+			
+			while(int_actuel != 13 ){
+				int_actuel=reader.read();
+				if(int_actuel != 13 )
+				int_stock=int_stock*10+(int_actuel-48);
+				
+			}
+			this.pj.set_direction_y(1);
+			int_stock=0;
+			int_actuel=0;
+			
+			
+			
 			int y;
 			int x;
+		
 			for (x = 0; x < width; x++) {
-				for (y = 0; y < height-1; y++) {
+				for (y = 0; y < height; y++) {
 					int_actuel=reader.read();
-					System.out.println(" chargement ");
+					reader.read();// manger l'espace
+					//System.out.println("esclaifde faze ");
 					if(int_actuel==250) {
 						elements[x][y] =  Objet.SOL;
 					}
-					if(int_actuel==170) {
+					if(int_actuel==177) {
 						elements[x][y] =  Objet.MUR;
+				
 					}
 					if(int_actuel==233) {
 						elements[x][y] =  Objet.POMME;
+						
 					}
 					if(int_actuel==(int)'?') {
 						elements[x][y] =  Objet.PARCHEMIN_DE_FORCE;
 					}
 					if(int_actuel==(int)'E') {
 						elements[x][y] =  Objet.ESCALIER;
+						
 					}
 					if(int_actuel==72) {
 						elements[x][y] =  this.pj;
+						
 					}
 					if(int_actuel==64) {
 						elements[x][y]=  new PNJ( x,  y);
@@ -307,11 +361,11 @@ public class Univers {
 					if(int_actuel==(int)'Z') {
 						elements[x][y] =  new Zombie( x,  y);
 					}
-					reader.read();
+					
 				}
 			
 			}
-			
+		
 			
 		} finally {
 			reader.close();

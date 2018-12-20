@@ -146,7 +146,6 @@ public class EcranJeu implements InterfaceAffichage {
 			case KeyEvent.VK_R:  this.ramasser(); break; //Benjamin
 			case KeyEvent.VK_C:  try {
 					this.univers.load();
-					System.out.println("chargement pj dir x :"+this.pj.get_direction_x());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
