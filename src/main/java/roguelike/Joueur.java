@@ -25,7 +25,7 @@ public abstract class Joueur extends Vivant{
 		  arrlist.add("D"); 
 		
 		  Collections.shuffle(arrlist);
-		  
+		  parole=arrlist.get(0);
 		  if(parole == "A") {
 			  s="y a il eu de l'avancement dans votre quete";
 		  }

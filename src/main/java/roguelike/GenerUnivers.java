@@ -58,6 +58,7 @@ public class GenerUnivers {
 		this.ajout_monstres(salles);
 		this.addEscalier(salles);
 		this.addPomme();
+		this.addPNJ(salles);
 		
 		return new Univers(this.elements);
 	}
@@ -285,13 +286,25 @@ public class GenerUnivers {
 			}
 			elements[x][y]=Objet.POMME;
 		}
-		
-		
-
-		
-		
 	}
 	
+		public void addPNJ(int[][] tab_salle){
+			int x;
+			int y;
+			x = (int)(Math.random() * width);
+			y = (int)(Math.random() * height);
+			while( ( (elements[x][y] != Objet.SOL) ) || !(est_dans_salle(tab_salle, x, y)))
+			{
+				x = (int)(Math.random() * width);
+				y = (int)(Math.random() * height);
+				
+			}
+			
+			elements[x][y]=new PNJ( x,  y);
+
+			
+			
+		}
 	
 	
 	
